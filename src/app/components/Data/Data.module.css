@@ -1,0 +1,74 @@
+.title {
+  letter-spacing: -1px;
+  font-size: 45px;
+}
+.regularText {
+  font-size: 18px;
+}
+.tabs:hover {
+  background-color: whitesmoke;
+}
+.menuText {
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+.focus {
+  font-weight: bold;
+}
+.tableOfContentTitle {
+  font-weight: bold;
+  font-size: 20px;
+}
+.tableOfContentText {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: dimgray;
+  cursor: pointer;
+}
+.tableOfContentText:hover {
+  color: black;
+}
+.tocContainer {
+  padding: 0px 20px 0px 20px;
+}
+.codeContainer {
+  overflow: visible;
+  background-color: "#f1f3f5";
+  padding: 10px;
+
+  border: 1px solid rgb(226, 226, 226);
+}
+.code,
+.inlineCode {
+  font-family: Courier, monospace;
+}
+.code {
+  font-size: 15px;
+}
+.inlineCode {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline;
+}
+.codeIndent {
+  margin-left: 45px;
+}
+.codeRed {
+  color: red;
+}
+.codeGreen {
+  color: green;
+}
+.table {
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 7px 7px;
+  margin-bottom: 20px;
+}
+.tableHeader {
+  font-size: 18px;
+}
+.tableBody {
+  font-size: 16px;
+}
