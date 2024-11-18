@@ -72,3 +72,13 @@
 .tableBody {
   font-size: 16px;
 }
+.indicator {
+  width: 12px;
+  height: 4px;
+  background-color: black;
+  transition: width 250ms ease;
+
+  &[data-active] {
+    width: 40px;
+  }
+}

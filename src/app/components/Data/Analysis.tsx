@@ -31,11 +31,12 @@ export function Analysis() {
         </Title>
 
         <Carousel
-          className={classes.table}
+          classNames={classes}
+          loop
           withIndicators
           height={500}
           plugins={[autoplay.current]}
-          onMouseEnter={autoplay.current.stop}
+          // onMouseEnter={autoplay.current.stop}
           // onMouseLeave={autoplay.current.reset}
         >
           <Carousel.Slide>
