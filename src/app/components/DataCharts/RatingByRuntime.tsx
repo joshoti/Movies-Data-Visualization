@@ -1,4 +1,3 @@
-// import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 import { Flex, Title, Text } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
@@ -33,13 +32,6 @@ const RatingByRuntime = (/*{ data }*/) => {
   }));
 
   return (
-    // <LineChart width={600} height={200} data={formattedData}>
-    //   <XAxis dataKey="runtime" />
-    //   <YAxis />
-    //   <Tooltip />
-    //   <Line type="monotone" dataKey="rating" stroke="#82ca9d" />
-    // </LineChart>
-
     <Flex direction={"column"}>
       <Title
         id="head"

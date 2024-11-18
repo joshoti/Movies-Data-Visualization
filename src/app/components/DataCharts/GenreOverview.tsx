@@ -1,4 +1,3 @@
-// import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
@@ -58,13 +57,6 @@ const OverviewGenres = (/*{ data }*/) => {
         Use Case: Analyze the distribution of movies by genre
       </Text>
 
-      {/* <BarChart width={600} height={400} data={formattedData}>
-        <XAxis dataKey="genre" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="movies" fill="#8884d8" />
-      </BarChart> */}
       <BarChart
         h={400}
         data={formattedData}
