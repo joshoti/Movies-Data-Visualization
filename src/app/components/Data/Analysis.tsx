@@ -1,10 +1,11 @@
-import { Text, Flex, Title, Space } from "@mantine/core";
+import { Flex, Title, Space } from "@mantine/core";
 import classes from "./Data.module.css";
 import { useEffect, useRef } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
 import OverviewGenres from "../DataCharts/GenreOverview";
 import RatingByRuntime from "../DataCharts/RatingByRuntime";
+import YearlyTrend from "../DataCharts/YearlyTrend";
 import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -33,7 +34,7 @@ export function Analysis() {
         <Carousel
           classNames={classes}
           loop
-          withIndicators
+          // withIndicators
           height={500}
           plugins={[autoplay.current]}
           // onMouseEnter={autoplay.current.stop}
@@ -45,7 +46,9 @@ export function Analysis() {
           <Carousel.Slide>
             <RatingByRuntime />
           </Carousel.Slide>
-          <Carousel.Slide>3</Carousel.Slide>
+          <Carousel.Slide>
+            <YearlyTrend />
+          </Carousel.Slide>
           {/* ...other slides */}
         </Carousel>
         <Space h={40} />
