@@ -1,5 +1,5 @@
 import { Outlet, useLocation, Navigate } from "react-router-dom";
-import { NavigationBar } from "../components/Data/NavigationBar";
+import { NavigationBar } from "../components/Analysis/NavigationBar";
 
 export const docsScrollOptions: ScrollIntoViewOptions = {
   behavior: "auto",
