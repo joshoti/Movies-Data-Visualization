@@ -1,6 +1,6 @@
 import { Flex, Title, Text } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
-import { marginTop } from "../Data/Analysis";
+import { marginTop, chartHeight } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
 export default function RatingByRuntimeAreaChart() {
@@ -45,7 +45,7 @@ export default function RatingByRuntimeAreaChart() {
         Use Case: Check if longer movies tend to have higher or lower ratings
       </Text>
       <AreaChart
-        h={400}
+        h={chartHeight - 100}
         data={formattedData}
         curveType="natural"
         dataKey="runtime"

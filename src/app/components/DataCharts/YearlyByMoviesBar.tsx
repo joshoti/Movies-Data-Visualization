@@ -1,6 +1,6 @@
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
-import { marginTop } from "../Data/Analysis";
+import { marginTop, chartHeight } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
 export default function YearByMoviesBarChart() {
@@ -58,7 +58,7 @@ export default function YearByMoviesBarChart() {
       </Text>
 
       <BarChart
-        h={400}
+        h={chartHeight - 100}
         data={formattedData}
         dataKey="year"
         series={[{ name: "movies", color: "#8884d8" }]}

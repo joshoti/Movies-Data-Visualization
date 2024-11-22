@@ -5,12 +5,13 @@ import classes from "./Data.module.css";
 import { useEffect, useRef } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
-import GenreByMovieBarChart from "../DataCharts/GenreOverview";
-import RatingByRuntimeAreaChart from "../DataCharts/RatingByRuntime";
-import YearByMoviesBarChart from "../DataCharts/YearlyTrend";
-import RevenueByRatingBubbleChart from "../DataCharts/RevenueRatingBubble";
+import GenreByMovieBarChart from "../DataCharts/GenreByMovieBar";
+import RatingByRuntimeAreaChart from "../DataCharts/RatingByRuntimeArea";
+import YearByMoviesBarChart from "../DataCharts/YearlyByMoviesBar";
+import GenreCompositeChart from "../DataCharts/GenreComposite";
 
 export const marginTop = 40;
+export const chartHeight = 500;
 export function Analysis() {
   // To scroll to the top manually
   useEffect(() => {
@@ -36,8 +37,8 @@ export function Analysis() {
           classNames={classes}
           loop
           // withIndicators
-          height={500}
-          plugins={[autoplay.current]}
+          height={chartHeight}
+          // plugins={[autoplay.current]}
           // onMouseEnter={autoplay.current.stop}
           // onMouseLeave={autoplay.current.reset}
         >
@@ -51,7 +52,7 @@ export function Analysis() {
             <YearByMoviesBarChart />
           </Carousel.Slide>
           <Carousel.Slide>
-            <RevenueByRatingBubbleChart />
+            <GenreCompositeChart />
           </Carousel.Slide>
           {/* ...other slides */}
         </Carousel>
