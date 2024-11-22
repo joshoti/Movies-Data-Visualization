@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LandingPageLayout } from "./app/pages/LandingPage";
 import { RedirectToHome } from "./app/pages/RedirectToHome";
 
-import { Analysis } from "./app/components/Data/Analysis";
-import { DocsLogin } from "./app/components/Data/DocsLogin";
-import { DocsWebhooks } from "./app/components/Data/DocsWebhooks";
+import { Analysis } from "./app/components/Analysis/Analysis";
+import { DocsLogin } from "./app/components/Analysis/DocsLogin";
+import { DocsWebhooks } from "./app/components/Analysis/DocsWebhooks";
 import { ScrollToTop } from "./app/utils/scoll";
 
 export function Router() {
