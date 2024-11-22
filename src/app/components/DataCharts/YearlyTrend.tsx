@@ -3,7 +3,7 @@ import { BarChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
-export default function YearlyTrend() {
+export default function YearByMoviesBarChart() {
   const data = [
     {
       color: "red",

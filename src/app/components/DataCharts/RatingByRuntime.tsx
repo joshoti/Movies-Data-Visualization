@@ -3,7 +3,7 @@ import { AreaChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
-export default function RatingByRuntime() {
+export default function RatingByRuntimeAreaChart() {
   const data = [
     {
       rating: 10,
