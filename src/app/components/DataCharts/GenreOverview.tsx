@@ -3,7 +3,7 @@ import { BarChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
-const OverviewGenres = (/*{ data }*/) => {
+export default function OverviewGenres() {
   const data = [
     {
       color: "red",
@@ -69,6 +69,4 @@ const OverviewGenres = (/*{ data }*/) => {
       />
     </Flex>
   );
-};
-
-export default OverviewGenres;
+}

@@ -3,7 +3,7 @@ import { BarChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
-const YearlyTrend = (/*{ data }*/) => {
+export default function YearlyTrend() {
   const data = [
     {
       color: "red",
@@ -69,6 +69,4 @@ const YearlyTrend = (/*{ data }*/) => {
       />
     </Flex>
   );
-};
-
-export default YearlyTrend;
+}

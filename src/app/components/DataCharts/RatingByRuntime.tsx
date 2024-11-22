@@ -3,7 +3,7 @@ import { AreaChart } from "@mantine/charts";
 import { marginTop } from "../Data/Analysis";
 import classes from "../Data/Data.module.css";
 
-const RatingByRuntime = (/*{ data }*/) => {
+export default function RatingByRuntime() {
   const data = [
     {
       rating: 10,
@@ -57,6 +57,4 @@ const RatingByRuntime = (/*{ data }*/) => {
       />
     </Flex>
   );
-};
-
-export default RatingByRuntime;
+}
