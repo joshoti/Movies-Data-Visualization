@@ -6,41 +6,29 @@ import classes from "../Data/Data.module.css";
 export default function GenreByMovieBarChart() {
   const data = [
     {
-      color: "red",
       count: 40,
-      runtime: 70,
       main_genre: "Action",
     },
     {
-      color: "blue",
       count: 41,
-      runtime: 70,
       main_genre: "Thriller",
     },
     {
-      color: "blue",
       count: 40,
-      runtime: 70,
       main_genre: "Drama",
     },
     {
-      color: "purple",
       count: 49,
-      runtime: 70,
       main_genre: "Sci-Fi",
     },
     {
-      color: "#8884d8",
       count: 50,
-      runtime: 70,
       main_genre: "Horror",
     },
   ];
   const formattedData = data.map((item) => ({
     genre: item.main_genre,
     movies: item.count,
-    runtime: item.runtime,
-    color: item.color,
   }));
 
   return (
