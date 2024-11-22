@@ -1,13 +1,14 @@
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel } from "@mantine/carousel";
 import { Flex, Title, Space } from "@mantine/core";
 import classes from "./Data.module.css";
 import { useEffect, useRef } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
-import OverviewGenres from "../DataCharts/GenreOverview";
-import RatingByRuntime from "../DataCharts/RatingByRuntime";
-import YearlyTrend from "../DataCharts/YearlyTrend";
-import { Carousel } from "@mantine/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import GenreByMovieBarChart from "../DataCharts/GenreOverview";
+import RatingByRuntimeAreaChart from "../DataCharts/RatingByRuntime";
+import YearByMoviesBarChart from "../DataCharts/YearlyTrend";
+import RevenueByRatingBubbleChart from "../DataCharts/RevenueRatingBubble";
 
 export const marginTop = 40;
 export function Analysis() {
@@ -41,13 +42,16 @@ export function Analysis() {
           // onMouseLeave={autoplay.current.reset}
         >
           <Carousel.Slide>
-            <OverviewGenres />
+            <GenreByMovieBarChart />
           </Carousel.Slide>
           <Carousel.Slide>
-            <RatingByRuntime />
+            <RatingByRuntimeAreaChart />
           </Carousel.Slide>
           <Carousel.Slide>
-            <YearlyTrend />
+            <YearByMoviesBarChart />
+          </Carousel.Slide>
+          <Carousel.Slide>
+            <RevenueByRatingBubbleChart />
           </Carousel.Slide>
           {/* ...other slides */}
         </Carousel>
