@@ -6,10 +6,10 @@ import classes from "../Data/Data.module.css";
 export default function YearByMoviesBarChart() {
   const data = [
     {
-      color: "red",
+      color: "blue",
       count: 40,
-      year: 1990,
-      total_gross: 200,
+      year: 1970,
+      total_gross: 1000,
     },
     {
       color: "blue",
@@ -18,10 +18,10 @@ export default function YearByMoviesBarChart() {
       total_gross: 300,
     },
     {
-      color: "blue",
+      color: "red",
       count: 40,
-      year: 1970,
-      total_gross: 1000,
+      year: 1990,
+      total_gross: 200,
     },
     {
       color: "purple",

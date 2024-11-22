@@ -6,29 +6,30 @@ import classes from "../Data/Data.module.css";
 export default function RevenueByRatingBubbleChart() {
   const data = [
     {
+      genre: "some",
       rating: 10,
       gross: 10,
-      runtime: 40,
+      runtime: 1200,
     },
     {
       rating: 8.5,
       gross: 60,
-      runtime: 60,
+      runtime: 630,
     },
     {
       rating: 8,
       gross: 70,
-      runtime: 70,
+      runtime: 700,
     },
     {
       rating: 9,
       gross: 20,
-      runtime: 80,
+      runtime: 802,
     },
     {
       rating: 6,
       gross: 100,
-      runtime: 90,
+      runtime: 910,
     },
   ];
   const formattedData = data.map((item) => ({
