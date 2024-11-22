@@ -60,6 +60,7 @@ export default function YearByMoviesBarChart() {
       <BarChart
         h={chartHeight - 100}
         data={formattedData}
+        withBarValueLabel
         dataKey="year"
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip

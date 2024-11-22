@@ -55,7 +55,8 @@ export default function GenreCompositeChart() {
         h={chartHeight - 150}
         data={formattedData}
         dataKey={"genre"}
-        maxBarWidth={30}
+        withBarValueLabel
+        withPointLabels
         series={[
           {
             name: "Runtime (mins)",

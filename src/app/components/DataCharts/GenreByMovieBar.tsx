@@ -61,6 +61,7 @@ export default function GenreByMovieBarChart() {
         h={chartHeight - 100}
         data={formattedData}
         dataKey="genre"
+        withBarValueLabel
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
         withLegend
