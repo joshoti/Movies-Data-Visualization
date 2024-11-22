@@ -9,6 +9,7 @@ import GenreByMovieBarChart from "../DataCharts/GenreByMovieBar";
 import RatingByRuntimeAreaChart from "../DataCharts/RatingByRuntimeArea";
 import YearByMoviesBarChart from "../DataCharts/YearlyByMoviesBar";
 import GenreCompositeChart from "../DataCharts/GenreComposite";
+import MoviesByCensorRatingAreaChart from "../DataCharts/MoviesByCensorArea";
 
 export const marginTop = 40;
 export const chartHeight = 500;
@@ -54,7 +55,9 @@ export function Analysis() {
           <Carousel.Slide>
             <GenreCompositeChart />
           </Carousel.Slide>
-          {/* ...other slides */}
+          <Carousel.Slide>
+            <MoviesByCensorRatingAreaChart />
+          </Carousel.Slide>
         </Carousel>
         <Space h={40} />
       </Flex>
