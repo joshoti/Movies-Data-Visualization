@@ -1,46 +1,46 @@
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Data/Analysis";
-import classes from "../Data/Data.module.css";
+import { marginTop, chartHeight } from "../Analysis/Analysis";
+import classes from "../Analysis/Analysis.module.css";
 
-export default function GenreByMovieBarChart() {
+export default function YearByMoviesBarChart() {
   const data = [
     {
-      color: "red",
+      color: "blue",
       count: 40,
-      rating: 7,
-      main_genre: "Action",
+      year: 1970,
+      total_gross: 1000,
     },
     {
       color: "blue",
       count: 41,
-      rating: 8,
-      main_genre: "Thriller",
+      year: 1980,
+      total_gross: 300,
     },
     {
-      color: "blue",
+      color: "red",
       count: 40,
-      rating: 8.5,
-      main_genre: "Drama",
+      year: 1990,
+      total_gross: 200,
     },
     {
       color: "purple",
       count: 49,
-      rating: 8,
-      main_genre: "Sci-Fi",
+      year: 2010,
+      total_gross: 320,
     },
     {
       color: "#8884d8",
       count: 50,
-      rating: 5,
-      main_genre: "Horror",
+      year: 2020,
+      total_gross: 980,
     },
   ];
   const formattedData = data.map((item) => ({
-    genre: item.main_genre,
+    year: item.year,
     movies: item.count,
-    rating: item.rating,
-    color: item.color, // use rating to generate color
+    color: item.color,
+    gross: item.total_gross,
   }));
 
   return (
@@ -51,21 +51,21 @@ export default function GenreByMovieBarChart() {
         mb={marginTop / 2}
         className={classes.tableOfContentTitle}
       >
-        Overview of Genres
+        Yearly Trend
       </Title>
       <Text mb={10} className={classes.regularText}>
-        Use Case: Analyze the distribution of movies by genre
+        Use Case: Show the number of movies released over the years.
       </Text>
 
       <BarChart
         h={chartHeight - 100}
         data={formattedData}
-        dataKey="genre"
         withBarValueLabel
+        dataKey="year"
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
         withLegend
-        xAxisLabel="Genres"
+        xAxisLabel="Year"
         yAxisLabel="Movies Count"
       />
     </Flex>

@@ -1,7 +1,7 @@
 import { Flex, Title, Text } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Data/Analysis";
-import classes from "../Data/Data.module.css";
+import { marginTop, chartHeight } from "../Analysis/Analysis";
+import classes from "../Analysis/Analysis.module.css";
 
 export default function MoviesByCensorRatingAreaChart() {
   const data = [

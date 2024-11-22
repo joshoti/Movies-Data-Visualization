@@ -1,5 +1,5 @@
 import { Text, Flex, Title, Table, Space, Box } from "@mantine/core";
-import classes from "./Data.module.css";
+import classes from "./Analysis.module.css";
 import { useEffect } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";

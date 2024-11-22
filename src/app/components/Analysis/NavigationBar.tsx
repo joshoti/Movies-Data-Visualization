@@ -1,5 +1,5 @@
 import { Flex, Tabs } from "@mantine/core";
-import classes from "./Data.module.css";
+import classes from "./Analysis.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
