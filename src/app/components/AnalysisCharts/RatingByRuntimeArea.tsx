@@ -2,34 +2,27 @@ import { Flex, Title, Text } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
 import { marginTop, chartHeight } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
+import {
+  IRatingByRuntime,
+  ratingByRuntimeData,
+} from "../data/RatingByRuntimeData";
+import { api } from "../../api/axios-api";
 
 export default function RatingByRuntimeAreaChart() {
-  const data = [
-    {
-      rating: 10,
-      runtime: 40,
-    },
-    {
-      rating: 8.5,
-      runtime: 60,
-    },
-    {
-      rating: 8,
-      runtime: 70,
-    },
-    {
-      rating: 9,
-      runtime: 80,
-    },
-    {
-      rating: 6,
-      runtime: 90,
-    },
-  ];
-  const formattedData = data.map((item) => ({
-    runtime: item.runtime,
-    rating: item.rating,
-  }));
+  // default initialization
+  let runtimeData: IRatingByRuntime = [];
+
+  api
+    .get("/analysis/sample-2")
+    .then(({ data }) => {
+      console.log("SAMPLE" + data);
+      runtimeData = data;
+    })
+    .catch((error) => {});
+
+  if (runtimeData.length === 0) {
+    runtimeData = ratingByRuntimeData;
+  }
 
   return (
     <Flex direction={"column"}>
@@ -46,11 +39,12 @@ export default function RatingByRuntimeAreaChart() {
       </Text>
       <AreaChart
         h={chartHeight - 100}
-        data={formattedData}
+        data={runtimeData}
         curveType="natural"
         dataKey="runtime"
         withLegend
         withPointLabels
+        gridAxis="xy"
         xAxisLabel="Runtime (Mins)"
         yAxisLabel="Rating"
         series={[{ name: "rating", color: "indigo.6" }]}
