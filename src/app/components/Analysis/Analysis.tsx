@@ -12,6 +12,7 @@ import GenreCompositeChart from "../AnalysisCharts/GenreComposite";
 import MoviesByCensorRatingAreaChart from "../AnalysisCharts/MoviesByCensorArea";
 
 export const marginTop = 40;
+export const toolTipFontWeight = 600;
 export const chartHeight = 500;
 export function Analysis() {
   // To scroll to the top manually
