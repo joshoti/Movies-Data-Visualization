@@ -22,7 +22,7 @@ function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
           <Text key={item.name} fz="sm">
-            <TooltipKey value="Movies Count" />{" "}
+            <TooltipKey value={`${label} Movies Count`} />{" "}
             <TooltipValue value={item.payload.movies} />
           </Text>
           <Text key={item.name} fz="sm">
