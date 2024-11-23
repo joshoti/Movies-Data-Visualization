@@ -1,46 +1,63 @@
-import { Flex, Text, Title } from "@mantine/core";
-import { BarChart } from "@mantine/charts";
+import { Paper, Flex, Text, Title } from "@mantine/core";
+import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
 import { marginTop, chartHeight } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
+import { getColorScale } from "../../utils/colorScale";
+import { movieByYearData, IMovieByYear } from "../data/MovieByYearData";
+import { api } from "../../api/axios-api";
+
+type ChartTooltipProps = {
+  label: string;
+  payload: Record<string, any>[] | undefined;
+};
+
+function ChartTooltip({ label, payload }: ChartTooltipProps) {
+  if (!payload) return null;
+
+  return (
+    <Paper px="md" py="sm" withBorder shadow="md" radius="md">
+      <Text fw={500} mb={5}>
+        {label}
+      </Text>
+      {getFilteredChartTooltipPayload(payload).map((item: any) => (
+        <>
+          <Text key={item.name} c={item.color} fz="sm">
+            Movie Count: {item.payload.movies}
+          </Text>
+          <Text key={item.name} c={item.color} fz="sm">
+            Total Gross: ${item.payload.total_gross}M
+          </Text>
+        </>
+      ))}
+    </Paper>
+  );
+}
 
 export default function YearByMoviesBarChart() {
-  const data = [
-    {
-      color: "blue",
-      count: 40,
-      year: 1970,
-      total_gross: 1000,
-    },
-    {
-      color: "blue",
-      count: 41,
-      year: 1980,
-      total_gross: 300,
-    },
-    {
-      color: "red",
-      count: 40,
-      year: 1990,
-      total_gross: 200,
-    },
-    {
-      color: "purple",
-      count: 49,
-      year: 2010,
-      total_gross: 320,
-    },
-    {
-      color: "#8884d8",
-      count: 50,
-      year: 2020,
-      total_gross: 980,
-    },
-  ];
-  const formattedData = data.map((item) => ({
+  // Default initialization
+  let yearData: IMovieByYear = { min_gross: 0, max_gross: 0, data: [] };
+
+  api
+    .get("/analysis/sample-3")
+    .then(({ data }) => {
+      console.log("SAMPLE" + data);
+      yearData = data;
+    })
+    .catch((error) => {});
+
+  if (yearData.data.length === 0) {
+    yearData = movieByYearData;
+  }
+
+  const formattedData = yearData.data.map((item) => ({
+    total_gross: item.total_gross,
     year: item.year,
     movies: item.count,
-    color: item.color,
-    gross: item.total_gross,
+    color: getColorScale(
+      yearData.min_gross,
+      yearData.max_gross,
+      item.total_gross
+    ),
   }));
 
   return (
@@ -64,6 +81,11 @@ export default function YearByMoviesBarChart() {
         dataKey="year"
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
+        tooltipProps={{
+          content: ({ label, payload }) => (
+            <ChartTooltip label={label} payload={payload} />
+          ),
+        }}
         withLegend
         xAxisLabel="Year"
         yAxisLabel="Movies Count"
