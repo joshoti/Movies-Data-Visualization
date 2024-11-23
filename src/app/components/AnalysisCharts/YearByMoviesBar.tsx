@@ -1,31 +1,33 @@
 import { Paper, Flex, Text, Title } from "@mantine/core";
 import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import {
+  marginTop,
+  chartHeight,
+  toolTipFontWeight,
+} from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { movieByYearData, IMovieByYear } from "../data/MovieByYearData";
 import { api } from "../../api/axios-api";
+import { TooltipKey, TooltipValue, ChartTooltipPropsT } from "./Tooltip";
 
-type ChartTooltipProps = {
-  label: string;
-  payload: Record<string, any>[] | undefined;
-};
-
-function ChartTooltip({ label, payload }: ChartTooltipProps) {
+function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
   if (!payload) return null;
 
   return (
     <Paper px="md" py="sm" withBorder shadow="md" radius="md">
-      <Text fw={500} mb={5}>
+      <Text fw={toolTipFontWeight} mb={5}>
         {label}
       </Text>
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
-          <Text key={item.name} c={item.color} fz="sm">
-            Movie Count: {item.payload.movies}
+          <Text key={item.name} fz="sm">
+            <TooltipKey value="Movies Count" />{" "}
+            <TooltipValue value={item.payload.movies} />
           </Text>
-          <Text key={item.name} c={item.color} fz="sm">
-            Total Gross: ${item.payload.total_gross}M
+          <Text key={item.name} fz="sm">
+            <TooltipKey value="Total Gross" />{" "}
+            <TooltipValue value={`$${item.payload.total_gross}M`} />
           </Text>
         </>
       ))}
