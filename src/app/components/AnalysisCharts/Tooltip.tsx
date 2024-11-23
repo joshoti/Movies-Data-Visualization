@@ -19,3 +19,8 @@ export function TooltipValue({ value }: TooltipContentT) {
     </Text>
   );
 }
+
+export type ChartTooltipPropsT = {
+  label: string;
+  payload: Record<string, any>[] | undefined;
+};
