@@ -1,10 +1,39 @@
-import { Flex, Text, Title } from "@mantine/core";
-import { BarChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import { Flex, Paper, Text, Title } from "@mantine/core";
+import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
+import {
+  marginTop,
+  chartHeight,
+  toolTipFontWeight,
+} from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { api } from "../../api/axios-api";
 import { genreByMovieData, IGenreByMovie } from "../data/GenreByMovieData";
+import { TooltipKey, TooltipValue, ChartTooltipPropsT } from "./Tooltip";
+
+function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
+  if (!payload) return null;
+
+  return (
+    <Paper px="md" py="sm" withBorder shadow="md" radius="md">
+      <Text fw={toolTipFontWeight} mb={5}>
+        {label}
+      </Text>
+      {getFilteredChartTooltipPayload(payload).map((item: any) => (
+        <>
+          <Text key={item.name} fz="sm">
+            <TooltipKey value={`${label} Movies Count`} />{" "}
+            <TooltipValue value={item.payload.movies} />
+          </Text>
+          <Text key={item.name} fz="sm">
+            <TooltipKey value="Average Rating" />{" "}
+            <TooltipValue value={item.payload.rating} />
+          </Text>
+        </>
+      ))}
+    </Paper>
+  );
+}
 
 export default function GenreByMovieBarChart() {
   // Default initialization
@@ -58,6 +87,11 @@ export default function GenreByMovieBarChart() {
         withBarValueLabel
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
+        tooltipProps={{
+          content: ({ label, payload }) => (
+            <ChartTooltip label={label} payload={payload} />
+          ),
+        }}
         withLegend
         xAxisLabel="Genres"
         yAxisLabel="Movies Count"
