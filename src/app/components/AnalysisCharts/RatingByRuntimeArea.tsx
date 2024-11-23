@@ -46,8 +46,10 @@ export default function RatingByRuntimeAreaChart() {
         withPointLabels
         gridAxis="xy"
         xAxisLabel="Runtime (Mins)"
-        yAxisLabel="Rating"
-        series={[{ name: "rating", color: "indigo.6" }]}
+        yAxisLabel="Average Rating"
+        series={[
+          { name: "rating", label: "Average Rating", color: "indigo.6" },
+        ]}
       />
     </Flex>
   );
