@@ -3,10 +3,10 @@ import { Text } from "@mantine/core";
 type TooltipContentT = {
   value: string;
 };
-
+const fontSize = 15;
 export function TooltipKey({ value }: TooltipContentT) {
   return (
-    <Text span fs="italic">
+    <Text fz={fontSize} span>
       {value}:
     </Text>
   );
@@ -14,7 +14,7 @@ export function TooltipKey({ value }: TooltipContentT) {
 
 export function TooltipValue({ value }: TooltipContentT) {
   return (
-    <Text span fw={500}>
+    <Text fz={fontSize} span>
       {value}
     </Text>
   );
