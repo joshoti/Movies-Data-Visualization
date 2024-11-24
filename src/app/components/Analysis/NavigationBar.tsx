@@ -58,6 +58,16 @@ export function NavigationBar() {
 
           {/* 2 */}
           <Tabs.Tab
+            onFocus={() => setActiveTabAndNavigate("query")}
+            h={useCaseMenuHeight}
+            value="query"
+            className={getTabStyle("query")}
+          >
+            Query
+          </Tabs.Tab>
+
+          {/* 3 */}
+          <Tabs.Tab
             onFocus={() => setActiveTabAndNavigate("probe")}
             h={useCaseMenuHeight}
             value="probe"
@@ -66,7 +76,7 @@ export function NavigationBar() {
             Probe
           </Tabs.Tab>
 
-          {/* 3 */}
+          {/* 4 */}
           <Tabs.Tab
             onFocus={() => setActiveTabAndNavigate("predict")}
             h={useCaseMenuHeight}

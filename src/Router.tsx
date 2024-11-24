@@ -15,6 +15,7 @@ export function Router() {
       <Routes>
         <Route path="/" element={<LandingPageLayout />}>
           <Route path="analysis" element={<Analysis />} />
+          <Route path="query" element={<Analysis />} />
           <Route path="probe" element={<DocsLogin />} />
           <Route path="predict" element={<DocsWebhooks />} />
         </Route>
