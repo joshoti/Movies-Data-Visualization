@@ -1,4 +1,4 @@
-import { Paper, Flex, Text, Title } from "@mantine/core";
+import { Paper, Flex, Text, Title, Space, ColorSwatch } from "@mantine/core";
 import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
 import {
   marginTop,
@@ -15,20 +15,34 @@ function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
   if (!payload) return null;
 
   return (
-    <Paper px="md" py="sm" withBorder shadow="md" radius="md">
+    <Paper px="md" py="sm" withBorder shadow="md" radius="sm">
       <Text fw={toolTipFontWeight} mb={5}>
         {label}
       </Text>
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
-          <Text key={item.name} fz="sm">
-            <TooltipKey value={`${label} Movies Count`} />{" "}
-            <TooltipValue value={item.payload.movies} />
-          </Text>
-          <Text key={item.name} fz="sm">
-            <TooltipKey value="Total Gross" />{" "}
-            <TooltipValue value={`$${item.payload.total_gross}M`} />
-          </Text>
+          <Flex justify={"space-between"}>
+            <Flex align={"center"}>
+              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipKey value={`${label} Movies Count`} />
+            </Flex>
+            <Space w={15} />
+            <TooltipValue
+              value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
+            />
+          </Flex>
+          <Flex justify={"space-between"}>
+            <Flex align={"center"}>
+              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipKey value="Total Gross" />
+            </Flex>
+            <Space w={15} />
+            <TooltipValue
+              value={`$${new Intl.NumberFormat("en-US").format(
+                item.payload.total_gross
+              )}M`}
+            />
+          </Flex>
         </>
       ))}
     </Paper>
@@ -81,6 +95,7 @@ export default function YearByMoviesBarChart() {
         data={formattedData}
         withBarValueLabel
         dataKey="year"
+        valueFormatter={(value) => new Intl.NumberFormat("en-US").format(value)}
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
         tooltipProps={{
