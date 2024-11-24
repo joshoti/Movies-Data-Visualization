@@ -1,4 +1,4 @@
-import { Flex, Paper, Text, Title } from "@mantine/core";
+import { Flex, Paper, Space, Text, Title } from "@mantine/core";
 import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
 import {
   marginTop,
@@ -10,25 +10,36 @@ import { getColorScale } from "../../utils/colorScale";
 import { api } from "../../api/axios-api";
 import { genreByMovieData, IGenreByMovie } from "../data/GenreByMovieData";
 import { TooltipKey, TooltipValue, ChartTooltipPropsT } from "./Tooltip";
+import { ColorSwatch } from "@mantine/core";
 
 function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
   if (!payload) return null;
 
   return (
-    <Paper px="md" py="sm" withBorder shadow="md" radius="md">
+    <Paper px="md" py="sm" withBorder shadow="md" radius="sm">
       <Text fw={toolTipFontWeight} mb={5}>
         {label}
       </Text>
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
-          <Text key={item.name} fz="sm">
-            <TooltipKey value={`${label} Movies Count`} />{" "}
-            <TooltipValue value={item.payload.movies} />
-          </Text>
-          <Text key={item.name} fz="sm">
-            <TooltipKey value="Average Rating" />{" "}
+          <Flex justify={"space-between"}>
+            <Flex align={"center"}>
+              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipKey value={`${label} Movies Count`} />
+            </Flex>
+            <Space w={15} />
+            <TooltipValue
+              value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
+            />
+          </Flex>
+          <Flex justify={"space-between"}>
+            <Flex align={"center"}>
+              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipKey value="Average Rating" />
+            </Flex>
+            <Space w={15} />
             <TooltipValue value={item.payload.rating} />
-          </Text>
+          </Flex>
         </>
       ))}
     </Paper>
@@ -85,6 +96,7 @@ export default function GenreByMovieBarChart() {
         data={formattedData}
         dataKey="genre"
         withBarValueLabel
+        valueFormatter={(value) => new Intl.NumberFormat("en-US").format(value)}
         series={[{ name: "movies", color: "#8884d8" }]}
         withTooltip
         tooltipProps={{
