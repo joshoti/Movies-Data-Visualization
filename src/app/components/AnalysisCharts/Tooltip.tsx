@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
 import { ColorSwatch } from "@mantine/core";
 
-const fontSize = 15;
+const fontSize = 14;
 
 type TooltipContent = {
   value: string;
@@ -18,7 +18,7 @@ export function TooltipColoredCircle({ value }: TooltipContent) {
 export function TooltipKey({ value }: TooltipContent) {
   return (
     <Text fz={fontSize} span>
-      {value}:
+      {value}
     </Text>
   );
 }

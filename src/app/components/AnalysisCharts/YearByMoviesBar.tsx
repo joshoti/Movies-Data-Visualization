@@ -4,6 +4,7 @@ import {
   marginTop,
   chartHeight,
   toolTipFontWeight,
+  toolTipSpacing,
 } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
@@ -29,9 +30,9 @@ function ChartTooltip({ label, payload }: ChartTooltipProps) {
           <Flex justify={"space-between"}>
             <Flex align={"center"}>
               <TooltipColoredCircle value={item.payload.color} />
-              <TooltipKey value={`${label} Movies Count`} />
+              <TooltipKey value="Movies Count" />
             </Flex>
-            <Space w={15} />
+            <Space w={toolTipSpacing} />
             <TooltipValue
               value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
             />
@@ -41,7 +42,7 @@ function ChartTooltip({ label, payload }: ChartTooltipProps) {
               <TooltipColoredCircle value={item.payload.color} />
               <TooltipKey value="Total Gross" />
             </Flex>
-            <Space w={15} />
+            <Space w={toolTipSpacing} />
             <TooltipValue
               value={`$${new Intl.NumberFormat("en-US").format(
                 item.payload.total_gross
