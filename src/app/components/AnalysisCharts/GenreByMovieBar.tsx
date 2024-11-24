@@ -8,15 +8,18 @@ import {
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { api } from "../../api/axios-api";
-import { genreByMovieData, IGenreByMovie } from "../data/GenreByMovieData";
+import {
+  genreByMovieData,
+  GenreByMovieChartData,
+} from "../data/GenreByMovieData";
 import {
   TooltipColoredCircle,
   TooltipKey,
   TooltipValue,
-  ChartTooltipPropsT,
+  ChartTooltipProps,
 } from "./Tooltip";
 
-function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
+function ChartTooltip({ label, payload }: ChartTooltipProps) {
   if (!payload) return null;
 
   return (
@@ -52,7 +55,11 @@ function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
 
 export default function GenreByMovieBarChart() {
   // Default initialization
-  let genreData: IGenreByMovie = { min_rating: 0, max_rating: 0, data: [] };
+  let genreData: GenreByMovieChartData = {
+    min_rating: 0,
+    max_rating: 0,
+    data: [],
+  };
 
   api
     .get("/analysis/sample-1")

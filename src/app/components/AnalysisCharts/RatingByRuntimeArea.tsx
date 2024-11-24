@@ -3,14 +3,14 @@ import { AreaChart } from "@mantine/charts";
 import { marginTop, chartHeight } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import {
-  IRatingByRuntime,
+  RatingByRuntimeChartData,
   ratingByRuntimeData,
 } from "../data/RatingByRuntimeData";
 import { api } from "../../api/axios-api";
 
 export default function RatingByRuntimeAreaChart() {
   // default initialization
-  let runtimeData: IRatingByRuntime = [];
+  let runtimeData: RatingByRuntimeChartData = [];
 
   api
     .get("/analysis/sample-2")

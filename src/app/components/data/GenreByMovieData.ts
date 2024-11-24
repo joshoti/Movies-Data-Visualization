@@ -1,15 +1,15 @@
-type genreData = {
+type GenreDataRecord = {
   main_genre: string;
   count: number;
   rating: number;
 };
 
-export type IGenreByMovie = {
+export type GenreByMovieChartData = {
   min_rating: number;
   max_rating: number;
-  data: Array<genreData>;
+  data: Array<GenreDataRecord>;
 };
-export const genreByMovieData: IGenreByMovie = {
+export const genreByMovieData: GenreByMovieChartData = {
   max_rating: 10,
   min_rating: 0,
   data: [

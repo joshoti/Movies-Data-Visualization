@@ -1,10 +1,10 @@
-type genreData = {
+type GenreDataRecord = {
   runtime: number;
   rating: number;
 };
 
-export type IRatingByRuntime = Array<genreData>;
-export const ratingByRuntimeData: IRatingByRuntime = [
+export type RatingByRuntimeChartData = Array<GenreDataRecord>;
+export const ratingByRuntimeData: RatingByRuntimeChartData = [
   {
     rating: 7.8,
     runtime: 40.0,

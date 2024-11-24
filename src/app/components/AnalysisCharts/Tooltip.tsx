@@ -3,20 +3,19 @@ import { ColorSwatch } from "@mantine/core";
 
 const fontSize = 15;
 
-type TooltipContentT = {
+type TooltipContent = {
   value: string;
 };
 
-export type ChartTooltipPropsT = {
+export type ChartTooltipProps = {
   label: string;
   payload: Record<string, any>[] | undefined;
 };
 
-
-export function TooltipColoredCircle({ value }: TooltipContentT) {
-  return <ColorSwatch mr={15} size={10} color={value} />
+export function TooltipColoredCircle({ value }: TooltipContent) {
+  return <ColorSwatch mr={15} size={10} color={value} />;
 }
-export function TooltipKey({ value }: TooltipContentT) {
+export function TooltipKey({ value }: TooltipContent) {
   return (
     <Text fz={fontSize} span>
       {value}:
@@ -24,11 +23,10 @@ export function TooltipKey({ value }: TooltipContentT) {
   );
 }
 
-export function TooltipValue({ value }: TooltipContentT) {
+export function TooltipValue({ value }: TooltipContent) {
   return (
     <Text fz={fontSize} span>
       {value}
     </Text>
   );
 }
-

@@ -1,12 +1,12 @@
-type genreData = {
+type GenreDataRecord = {
   main_genre: string;
   runtime: number;
   total_gross: number;
 };
 
-export type GenreCompositeT = Array<genreData>;
+export type GenreCompositeChartData = Array<GenreDataRecord>;
 
-export const genreCompositeData: GenreCompositeT = [
+export const genreCompositeData: GenreCompositeChartData = [
   {
     main_genre: "Action",
     runtime: 183135.0,

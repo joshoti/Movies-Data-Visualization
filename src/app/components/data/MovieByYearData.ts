@@ -1,15 +1,16 @@
-type yearData = {
+type YearDataRecord = {
   count: number;
   total_gross: number;
   year: number;
 };
 
-export type IMovieByYear = {
+export type MovieByYearChartData = {
   min_gross: number;
   max_gross: number;
-  data: Array<yearData>;
+  data: Array<YearDataRecord>;
 };
-export const movieByYearData: IMovieByYear = {
+
+export const movieByYearData: MovieByYearChartData = {
   max_gross: 98000,
   min_gross: 10,
   data: [

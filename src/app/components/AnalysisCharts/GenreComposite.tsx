@@ -4,13 +4,13 @@ import { marginTop, chartHeight } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import {
   genreCompositeData,
-  GenreCompositeT,
+  GenreCompositeChartData,
 } from "../data/GenreCompositeData";
 import { api } from "../../api/axios-api";
 
 export default function GenreCompositeChart() {
   // default initialization
-  let genreData: GenreCompositeT = [];
+  let genreData: GenreCompositeChartData = [];
 
   api
     .get("/analysis/sample-4")
@@ -39,12 +39,13 @@ export default function GenreCompositeChart() {
         grouped by Genre.
       </Text>
       <CompositeChart
-        h={chartHeight - 150}
+        h={chartHeight - 100}
         pl={10}
-        pt={10}
         data={genreData}
         dataKey={"main_genre"}
         xAxisLabel="Genres"
+        valueFormatter={(value) => new Intl.NumberFormat("en-US").format(value)}
+        withLegend
         withBarValueLabel
         withPointLabels
         series={[
@@ -56,11 +57,11 @@ export default function GenreCompositeChart() {
           },
           {
             name: "total_gross",
-            label: "Total Gross",
+            label: "Total Gross (Million $)",
             color: "red.8",
             type: "line",
           },
-          { name: "Rating", color: "yellow.8", type: "area" },
+          // { name: "Rating", color: "yellow.8", type: "area" },
         ]}
         curveType="natural"
       />
