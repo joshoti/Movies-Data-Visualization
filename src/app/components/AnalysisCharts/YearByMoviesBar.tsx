@@ -1,4 +1,4 @@
-import { Paper, Flex, Text, Title, Space, ColorSwatch } from "@mantine/core";
+import { Paper, Flex, Text, Title, Space } from "@mantine/core";
 import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
 import {
   marginTop,
@@ -9,7 +9,12 @@ import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { movieByYearData, IMovieByYear } from "../data/MovieByYearData";
 import { api } from "../../api/axios-api";
-import { TooltipKey, TooltipValue, ChartTooltipPropsT } from "./Tooltip";
+import {
+  TooltipKey,
+  TooltipValue,
+  ChartTooltipPropsT,
+  TooltipColoredCircle,
+} from "./Tooltip";
 
 function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
   if (!payload) return null;
@@ -23,7 +28,7 @@ function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
         <>
           <Flex justify={"space-between"}>
             <Flex align={"center"}>
-              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipColoredCircle value={item.payload.color} />
               <TooltipKey value={`${label} Movies Count`} />
             </Flex>
             <Space w={15} />
@@ -33,7 +38,7 @@ function ChartTooltip({ label, payload }: ChartTooltipPropsT) {
           </Flex>
           <Flex justify={"space-between"}>
             <Flex align={"center"}>
-              <ColorSwatch mr={15} size={10} color={item.payload.color} />
+              <TooltipColoredCircle value={item.payload.color} />
               <TooltipKey value="Total Gross" />
             </Flex>
             <Space w={15} />
