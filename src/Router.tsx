@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { LandingPageLayout } from "./app/pages/LandingPage";
 import { RedirectToHome } from "./app/pages/RedirectToHome";
-
 import { Analysis } from "./app/components/Analysis/Analysis";
 import { DocsLogin } from "./app/components/Analysis/DocsLogin";
 import { DocsWebhooks } from "./app/components/Analysis/DocsWebhooks";
 import { ScrollToTop } from "./app/utils/scoll";
+import { QueryTable } from "./app/components/Query/Query";
 
 export function Router() {
   return (
@@ -15,7 +14,7 @@ export function Router() {
       <Routes>
         <Route path="/" element={<LandingPageLayout />}>
           <Route path="analysis" element={<Analysis />} />
-          <Route path="query" element={<Analysis />} />
+          <Route path="query" element={<QueryTable />} />
           <Route path="probe" element={<DocsLogin />} />
           <Route path="predict" element={<DocsWebhooks />} />
         </Route>
