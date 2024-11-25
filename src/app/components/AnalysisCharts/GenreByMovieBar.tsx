@@ -31,20 +31,17 @@ function ChartTooltip({ label, payload }: ChartTooltipProps) {
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
           <Flex justify={"space-between"}>
-            <Flex align={"center"}>
-              <TooltipColoredCircle value={item.payload.color} />
-              <TooltipKey value="Movies Count" />
-            </Flex>
+            <TooltipKey value="Movies Count" markerColor={item.payload.color} />
             <Space w={toolTipSpacing} />
             <TooltipValue
               value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
             />
           </Flex>
           <Flex justify={"space-between"}>
-            <Flex align={"center"}>
-              <TooltipColoredCircle value={item.payload.color} />
-              <TooltipKey value="Average Rating" />
-            </Flex>
+            <TooltipKey
+              value="Average Rating"
+              markerColor={item.payload.color}
+            />
             <Space w={toolTipSpacing} />
             <TooltipValue value={item.payload.rating} />
           </Flex>

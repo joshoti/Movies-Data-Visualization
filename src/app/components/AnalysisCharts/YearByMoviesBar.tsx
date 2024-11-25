@@ -10,12 +10,7 @@ import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { movieByYearData, MovieByYearChartData } from "../data/MovieByYearData";
 import { api } from "../../api/axios-api";
-import {
-  TooltipKey,
-  TooltipValue,
-  ChartTooltipProps,
-  TooltipColoredCircle,
-} from "./Tooltip";
+import { TooltipKey, TooltipValue, ChartTooltipProps } from "./Tooltip";
 
 function ChartTooltip({ label, payload }: ChartTooltipProps) {
   if (!payload) return null;
@@ -28,20 +23,14 @@ function ChartTooltip({ label, payload }: ChartTooltipProps) {
       {getFilteredChartTooltipPayload(payload).map((item: any) => (
         <>
           <Flex justify={"space-between"}>
-            <Flex align={"center"}>
-              <TooltipColoredCircle value={item.payload.color} />
-              <TooltipKey value="Movies Count" />
-            </Flex>
+            <TooltipKey value="Movies Count" markerColor={item.payload.color} />
             <Space w={toolTipSpacing} />
             <TooltipValue
               value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
             />
           </Flex>
           <Flex justify={"space-between"}>
-            <Flex align={"center"}>
-              <TooltipColoredCircle value={item.payload.color} />
-              <TooltipKey value="Total Gross" />
-            </Flex>
+            <TooltipKey value="Total Gross" markerColor={item.payload.color} />
             <Space w={toolTipSpacing} />
             <TooltipValue
               value={`$${new Intl.NumberFormat("en-US").format(
