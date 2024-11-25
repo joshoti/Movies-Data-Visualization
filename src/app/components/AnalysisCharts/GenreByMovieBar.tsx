@@ -1,11 +1,6 @@
-import { Flex, Paper, Space, Text, Title } from "@mantine/core";
-import { BarChart, getFilteredChartTooltipPayload } from "@mantine/charts";
-import {
-  marginTop,
-  chartHeight,
-  toolTipFontWeight,
-  toolTipSpacing,
-} from "../Analysis/Analysis";
+import { Flex, Text, Title } from "@mantine/core";
+import { BarChart } from "@mantine/charts";
+import { marginTop, chartHeight } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { api } from "../../api/axios-api";
@@ -13,43 +8,7 @@ import {
   genreByMovieData,
   GenreByMovieChartData,
 } from "../data/GenreByMovieData";
-import {
-  TooltipColoredCircle,
-  TooltipKey,
-  TooltipValue,
-  ChartTooltipProps,
-} from "./Tooltip";
-
-function ChartTooltip({ label, payload }: ChartTooltipProps) {
-  if (!payload) return null;
-
-  return (
-    <Paper px="md" py="sm" withBorder shadow="md" radius="sm">
-      <Text fw={toolTipFontWeight} mb={5}>
-        {label}
-      </Text>
-      {getFilteredChartTooltipPayload(payload).map((item: any) => (
-        <>
-          <Flex justify={"space-between"}>
-            <TooltipKey value="Movies Count" markerColor={item.payload.color} />
-            <Space w={toolTipSpacing} />
-            <TooltipValue
-              value={new Intl.NumberFormat("en-US").format(item.payload.movies)}
-            />
-          </Flex>
-          <Flex justify={"space-between"}>
-            <TooltipKey
-              value="Average Rating"
-              markerColor={item.payload.color}
-            />
-            <Space w={toolTipSpacing} />
-            <TooltipValue value={item.payload.rating} />
-          </Flex>
-        </>
-      ))}
-    </Paper>
-  );
-}
+import { ChartTooltip, TooltipRecord } from "./Tooltip";
 
 export default function GenreByMovieBarChart() {
   // Default initialization
@@ -86,6 +45,19 @@ export default function GenreByMovieBarChart() {
     ),
   }));
 
+  const tooltipLegendData: Array<TooltipRecord> = [
+    {
+      attributeName: "Movies Count",
+      attributePropertyName: "movies",
+      formatNumber: true,
+    },
+    {
+      attributeName: "Average Rating",
+      attributePropertyName: "rating",
+      formatNumber: false,
+    },
+  ];
+
   return (
     <Flex direction={"column"}>
       <Title
@@ -110,7 +82,11 @@ export default function GenreByMovieBarChart() {
         withTooltip
         tooltipProps={{
           content: ({ label, payload }) => (
-            <ChartTooltip label={label} payload={payload} />
+            <ChartTooltip
+              label={label}
+              payload={payload}
+              tooltipLegendData={tooltipLegendData}
+            />
           ),
         }}
         withLegend
