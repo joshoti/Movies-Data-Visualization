@@ -1,5 +1,6 @@
 import { Outlet, useLocation, Navigate } from "react-router-dom";
 import { NavigationBar } from "../components/Analysis/NavigationBar";
+import { Flex } from "@mantine/core";
 
 export const docsScrollOptions: ScrollIntoViewOptions = {
   behavior: "auto",
@@ -13,24 +14,19 @@ export function LandingPageLayout() {
   }
 
   return (
-    <>
+    <Flex direction={"column"} h={"100vh"}>
+      {/* Top dynamic content */}
       <div
         style={{
-          height: "100vh",
+          flex: 1,
+          padding: "20px",
+          overflowY: "auto",
         }}
       >
-        {/* Top dynamic content */}
-        <div
-          style={{
-            padding: "20px",
-            overflowY: "auto",
-          }}
-        >
-          <Outlet />
-        </div>
-
-        <NavigationBar />
+        <Outlet />
       </div>
-    </>
+
+      <NavigationBar />
+    </Flex>
   );
 }
