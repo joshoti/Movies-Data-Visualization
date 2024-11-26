@@ -1,11 +1,12 @@
-import { Text, Flex, Title, Space, Paper } from "@mantine/core";
-import classes from "./Analysis.module.css";
+import { Text, Flex, Title, Paper } from "@mantine/core";
+import classes from "./LLMAgent.module.css";
 import { useEffect } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
 
-export function DocsLogin() {
+export function Probe() {
   // To scroll to the top manually
+  // Edit this to scroll to bottom automatically
   useEffect(() => {
     scrollToElement("head", docsScrollOptions);
   });
@@ -22,11 +23,10 @@ export function DocsLogin() {
           mb={marginTop / 2}
           className={classes.title}
         >
-          OAuth 2.0 API
+          Probe
         </Title>
         <Text mb={10} className={classes.regularText}>
-          Integrate the Login API to authenticate users and manage their
-          sessions securely.
+          Ask questions about the
         </Text>
         <Title
           id="prerequisites"
@@ -61,24 +61,6 @@ export function DocsLogin() {
             </Text>
           </Text>
         </Paper>
-        <Space h={40} />
-      </Flex>
-
-      {/* Table of Contents */}
-      <Flex flex={0.4} direction="column" className={classes.tocContainer}>
-        <Text
-          className={classes.tableOfContentTitle}
-          mt={marginTop + 10}
-          mb={marginTop / 2}
-        >
-          Table of Contents
-        </Text>
-        <Text
-          onClick={() => scrollToElement("prerequisites")}
-          className={classes.tableOfContentText}
-        >
-          Prerequisites
-        </Text>
       </Flex>
     </Flex>
   );
