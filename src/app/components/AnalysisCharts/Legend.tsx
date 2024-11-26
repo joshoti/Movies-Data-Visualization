@@ -20,25 +20,24 @@ function GradientBar({ minValue, maxValue }: Gradient) {
         radius="xs"
       ></Paper>
       <Flex justify={"space-between"} style={{ zIndex: -1 }}>
-        <Flex direction={"column"} align={"flex-start"}>
-          <GradientMarker value={minValue} />
-        </Flex>
-        <Flex direction={"column"} align={"center"}>
-          <GradientMarker value={(minValue + maxValue) / 2} />
-        </Flex>
-        <Flex direction={"column"} align={"end"}>
-          <GradientMarker value={maxValue} />
-        </Flex>
+        <GradientMarker value={minValue} align={"flex-start"} />
+        <GradientMarker value={(minValue + maxValue) / 2} align={"center"} />
+        <GradientMarker value={maxValue} align={"end"} />
       </Flex>
     </Flex>
   );
 }
 
-const GradientMarker = ({ value }: any) => {
+type LegendArgs = {
+  value: number;
+  align: string;
+};
+
+const GradientMarker = ({ value, align }: LegendArgs) => {
   return (
-    <>
+    <Flex direction={"column"} align={align}>
       <Text lh={0.6}>|</Text>
       <Text>{value}</Text>
-    </>
+    </Flex>
   );
 };
