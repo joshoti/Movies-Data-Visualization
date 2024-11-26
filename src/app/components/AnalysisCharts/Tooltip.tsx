@@ -5,6 +5,45 @@ import { getFilteredChartTooltipPayload } from "@mantine/charts";
 
 const fontSize = 14;
 
+/**
+ * Custom tooltop component. Label and payload are passed from a Chart's parameters.
+ * "tooltipLegendData" is an object summarizing the data to provide a legend for and
+ * where to get the relevant values from the payload.
+ *
+ * Each object in the tooltpLegendData array corresponds to a line in the tooltip.
+ * @param label the value stated on the x-axis
+ * @param payload an object containing all the data passed into the chart
+ * @param tooltipLegendData an array of objects defining the information to display on the tooltip
+ * @returns ChartTooltip component
+ */
+export function ChartTooltip({
+  label,
+  payload,
+  tooltipLegendData,
+}: ChartTooltipProps) {
+  if (!payload) return null;
+
+  return (
+    <Paper px="md" py="sm" withBorder shadow="md" radius="sm">
+      <Text fw={toolTipFontWeight} mb={5}>
+        {label}
+      </Text>
+      {getFilteredChartTooltipPayload(payload).map((item: any) => (
+        <>
+          {tooltipLegendData.map((tooltip: TooltipRecord) => (
+            <TooltipRow
+              dataItem={item}
+              attributeName={tooltip.attributeName}
+              attributePropertyName={tooltip.attributePropertyName}
+              formatNumber={tooltip.formatNumber}
+            />
+          ))}
+        </>
+      ))}
+    </Paper>
+  );
+}
+
 type TooltipArgs = {
   value: string;
 };
@@ -22,7 +61,7 @@ type TooltipKeyArgs = {
   markerColor: string;
 };
 
-export function TooltipColoredCircle({ value }: TooltipArgs) {
+function TooltipColoredCircle({ value }: TooltipArgs) {
   return <ColorSwatch mr={15} size={10} color={value} />;
 }
 
@@ -68,43 +107,5 @@ export function TooltipRow({
         }
       />
     </Flex>
-  );
-}
-/**
- * Custom tooltop component. Label and payload are passed from a Chart's parameters.
- * "tooltipLegendData" is an object summarizing the data to provide a legend for and
- * where to get the relevant values from the payload.
- *
- * Each object in the tooltpLegendData array corresponds to a line in the tooltip.
- * @param label
- * @param payload
- * @param tooltipLegendData
- * @returns ChartTooltip component
- */
-export function ChartTooltip({
-  label,
-  payload,
-  tooltipLegendData,
-}: ChartTooltipProps) {
-  if (!payload) return null;
-
-  return (
-    <Paper px="md" py="sm" withBorder shadow="md" radius="sm">
-      <Text fw={toolTipFontWeight} mb={5}>
-        {label}
-      </Text>
-      {getFilteredChartTooltipPayload(payload).map((item: any) => (
-        <>
-          {tooltipLegendData.map((tooltip: TooltipRecord) => (
-            <TooltipRow
-              dataItem={item}
-              attributeName={tooltip.attributeName}
-              attributePropertyName={tooltip.attributePropertyName}
-              formatNumber={tooltip.formatNumber}
-            />
-          ))}
-        </>
-      ))}
-    </Paper>
   );
 }
