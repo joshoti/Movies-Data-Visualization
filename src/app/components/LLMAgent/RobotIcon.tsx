@@ -7,7 +7,7 @@ export function RobotHeaderIcon() {
 }
 
 export function RobotChatIcon() {
-  const backgroundRadius = 40;
+  const backgroundRadius = 30;
   return (
     <Flex
       justify="center"
@@ -20,7 +20,7 @@ export function RobotChatIcon() {
         width: backgroundRadius,
       }}
     >
-      <IconRobot size={30} color={robotColor} />
+      <IconRobot size={20} color={robotColor} />
     </Flex>
   );
 }
