@@ -37,7 +37,8 @@ const GradientMarker = ({ value, align }: LegendArgs) => {
   return (
     <Flex direction={"column"} align={align}>
       <Text lh={0.6}>|</Text>
-      <Text>{new Intl.NumberFormat("en-US").format(value)}</Text>
+      {/* Width helps to position the ticks better */}
+      <Text w={20}>{new Intl.NumberFormat("en-US").format(value)}</Text>
     </Flex>
   );
 };
