@@ -42,6 +42,7 @@ export function Analysis() {
           loop
           // withIndicators
           height={chartHeight}
+          draggable={false}
           // plugins={[autoplay.current]}
           // onMouseEnter={autoplay.current.stop}
           // onMouseLeave={autoplay.current.reset}
