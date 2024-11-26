@@ -15,6 +15,7 @@ export const marginTop = 40;
 export const toolTipFontWeight = 600;
 export const chartHeight = 550;
 export const toolTipSpacing = 30;
+
 export function Analysis() {
   // To scroll to the top manually
   useEffect(() => {
