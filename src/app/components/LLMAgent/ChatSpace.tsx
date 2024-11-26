@@ -11,10 +11,16 @@ export function ChatSpace() {
   ];
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "whitesmoke",
+        paddingLeft: 50,
+        paddingRight: 50,
+      }}
+    >
       {sampleMessages.map(({ role, message }) => (
         <MessageBubble role={role} message={message} />
       ))}
-    </>
+    </div>
   );
 }

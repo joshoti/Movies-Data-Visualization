@@ -32,7 +32,11 @@ function AgentMessage({ message }: Message) {
 }
 
 function UserMessage({ message }: Message) {
-  return <MessageBox message={message} />;
+  return (
+    <Flex justify="end">
+      <MessageBox message={message} />
+    </Flex>
+  );
 }
 
 function MessageBox({ message }: Message) {
