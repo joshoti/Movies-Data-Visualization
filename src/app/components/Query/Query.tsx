@@ -34,7 +34,7 @@ export function QueryTable() {
       <Flex flex={1} direction="column">
         <Title
           id="head"
-          mt={marginTop}
+          mt={marginTop / 2}
           mb={marginTop / 2}
           className={classes.title}
         >
