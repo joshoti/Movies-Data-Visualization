@@ -9,6 +9,7 @@ import {
   GenreByMovieChartData,
 } from "../data/GenreByMovieData";
 import { ChartTooltip, TooltipRecord } from "./Tooltip";
+import { ChartLegend } from "./Legend";
 
 export default function GenreByMovieBarChart() {
   // Default initialization
@@ -73,6 +74,7 @@ export default function GenreByMovieBarChart() {
       </Text>
 
       <BarChart
+        mt={20}
         h={chartHeight - 100}
         data={formattedData}
         dataKey="genre"
@@ -88,6 +90,15 @@ export default function GenreByMovieBarChart() {
               tooltipLegendData={tooltipLegendData}
             />
           ),
+        }}
+        legendProps={{
+          content: () => (
+            <ChartLegend
+              minValue={genreData.min_rating}
+              maxValue={genreData.max_rating}
+            />
+          ),
+          verticalAlign: "bottom",
         }}
         withLegend
         xAxisLabel="Genres"

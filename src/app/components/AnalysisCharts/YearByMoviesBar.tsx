@@ -6,6 +6,7 @@ import { getColorScale } from "../../utils/colorScale";
 import { movieByYearData, MovieByYearChartData } from "../data/MovieByYearData";
 import { api } from "../../api/axios-api";
 import { TooltipRecord, ChartTooltip } from "./Tooltip";
+import { ChartLegend } from "./Legend";
 
 export default function YearByMoviesBarChart() {
   // Default initialization
@@ -62,6 +63,7 @@ export default function YearByMoviesBarChart() {
       </Text>
 
       <BarChart
+        mt={20}
         h={chartHeight - 100}
         data={formattedData}
         withBarValueLabel
@@ -77,6 +79,15 @@ export default function YearByMoviesBarChart() {
               tooltipLegendData={tooltipLegendData}
             />
           ),
+        }}
+        legendProps={{
+          content: () => (
+            <ChartLegend
+              minValue={yearData.min_gross}
+              maxValue={yearData.max_gross}
+            />
+          ),
+          verticalAlign: "bottom",
         }}
         withLegend
         xAxisLabel="Year"
