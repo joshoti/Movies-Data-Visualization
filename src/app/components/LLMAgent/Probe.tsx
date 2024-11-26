@@ -1,8 +1,9 @@
-import { Text, Flex, Title, Paper } from "@mantine/core";
+import { Text, Flex, Title, Paper, Group } from "@mantine/core";
 import classes from "./LLMAgent.module.css";
 import { useEffect } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
+import { RobotHeaderIcon } from "./RobotIcon";
 
 export function Probe() {
   // To scroll to the top manually
@@ -14,20 +15,24 @@ export function Probe() {
   const marginTop = 40;
 
   return (
-    <Flex h={"100%"}>
-      {/* Content section */}
-      <Flex flex={1} direction="column">
+    <Flex direction="column">
+      <Flex align="center" justify="center">
         <Title
           id="head"
-          mt={marginTop}
+          mt={marginTop / 2}
           mb={marginTop / 2}
           className={classes.title}
         >
           Probe
         </Title>
+        <RobotHeaderIcon />
+      </Flex>
+      <Group justify="center">
         <Text mb={10} className={classes.regularText}>
-          Ask questions about the
+          Ask questions related to the table
         </Text>
+      </Group>
+      <Flex flex={1} direction="column">
         <Title
           id="prerequisites"
           mt={marginTop}
