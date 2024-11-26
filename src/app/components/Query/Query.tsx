@@ -5,7 +5,7 @@ import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
 import { table } from "../data/Table";
 
-export function QueryTable() {
+export function Query() {
   // To scroll to the top manually
   useEffect(() => {
     scrollToElement("head", docsScrollOptions);

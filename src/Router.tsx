@@ -3,7 +3,7 @@ import { LandingPageLayout } from "./app/pages/LandingPage";
 import { RedirectToAnalysis } from "./app/pages/RedirectToHome";
 import { Probe } from "./app/components/LLMAgent/Probe";
 import { ScrollToTop } from "./app/utils/scoll";
-import { QueryTable } from "./app/components/Query/Query";
+import { QueryTable } from "./app/pages/Query";
 import { AnalysisCharts } from "./app/pages/Analysis";
 
 export function Router() {
