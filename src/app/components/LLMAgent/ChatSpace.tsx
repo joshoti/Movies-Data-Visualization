@@ -1,6 +1,3 @@
-import { Text, Flex, Title, Paper } from "@mantine/core";
-import classes from "./LLMAgent.module.css";
-import { marginTop } from "../Analysis/Analysis";
 import { MessageBubble } from "./MessageTemplate";
 
 export function ChatSpace() {

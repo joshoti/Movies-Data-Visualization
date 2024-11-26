@@ -60,6 +60,7 @@ export default function YearByMoviesBarChart() {
       </Title>
       <Text mb={10} className={classes.regularText}>
         Use Case: Show the number of movies released over the years.
+        Additionally, a heatmap visualizes the total gross for each year.
       </Text>
 
       <BarChart

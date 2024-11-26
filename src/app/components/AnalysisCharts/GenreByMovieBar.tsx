@@ -70,7 +70,8 @@ export default function GenreByMovieBarChart() {
         Overview of Genres
       </Title>
       <Text mb={10} className={classes.regularText}>
-        Use Case: Analyze the distribution of movies by genre
+        Use Case: Analyze the distribution of movies by genre. Additionally, a
+        heatmap displays the average ratings of different genres.
       </Text>
 
       <BarChart
