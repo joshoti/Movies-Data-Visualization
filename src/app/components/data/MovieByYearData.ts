@@ -12,7 +12,7 @@ export type MovieByYearChartData = {
 
 export const movieByYearData: MovieByYearChartData = {
   max_gross: 98000,
-  min_gross: 10,
+  min_gross: 0,
   data: [
     {
       count: 10,

@@ -10,8 +10,8 @@ export type GenreByMovieChartData = {
   data: Array<GenreDataRecord>;
 };
 export const genreByMovieData: GenreByMovieChartData = {
-  max_rating: 10,
-  min_rating: 0,
+  max_rating: 7.5,
+  min_rating: 6,
   data: [
     {
       count: 1577,
