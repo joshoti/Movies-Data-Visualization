@@ -1,4 +1,4 @@
-import { Text, Flex, Title, Table, Space, Box } from "@mantine/core";
+import { Text, Flex, Title, Table, Box } from "@mantine/core";
 import classes from "./Query.module.css";
 import { useEffect } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
@@ -62,7 +62,6 @@ export function QueryTable() {
             <Table.Tbody className={classes.tableBody}>{tableRows}</Table.Tbody>
           </Table>
         </Box>
-        <Space h={40} />
       </Flex>
     </Flex>
   );
