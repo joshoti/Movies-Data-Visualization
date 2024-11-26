@@ -21,7 +21,7 @@ const colorScale: Record<number, string> = {
 
 const colorScaleUsingRecord = (min: number, max: number, value: number) => {
   const percent = Math.round(((value - min) / (max - min)) * 10);
-  return colorScale[percent * 10];
+  return colorScale[Math.min(percent * 10, 100)];
 };
 
 /**
