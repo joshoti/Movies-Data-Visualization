@@ -12,7 +12,7 @@ export function ChartLegend({ minValue, maxValue }: Gradient) {
 
 function GradientBar({ minValue, maxValue }: Gradient) {
   return (
-    <Flex direction={"column"} w={500} mt={20} ml={50}>
+    <Flex direction={"column"} w={"35vw"} mt={20} ml={50}>
       <Paper
         bg={`linear-gradient(to right, ${listColors()})`}
         h={20}
@@ -37,7 +37,7 @@ const GradientMarker = ({ value, align }: LegendArgs) => {
   return (
     <Flex direction={"column"} align={align}>
       <Text lh={0.6}>|</Text>
-      <Text>{value}</Text>
+      <Text>{new Intl.NumberFormat("en-US").format(value)}</Text>
     </Flex>
   );
 };
