@@ -38,3 +38,7 @@ const colorScaleusingD3 = (min: number, max: number, value: number) => {
     .domain([min, max]);
   return colorFunction(value);
 };
+
+export const listColors = () => {
+  return Object.values(colorScale);
+};
