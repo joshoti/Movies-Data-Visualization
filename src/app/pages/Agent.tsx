@@ -1,6 +1,7 @@
 import { ProbeHeader } from "../components/LLMAgent/ProbeHeader";
 import { PredictHeader } from "../components/LLMAgent/PredictHeader";
 import { RedirectToAnalysis } from "./RedirectToHome";
+import { ChatSpace } from "../components/LLMAgent/ChatSpace";
 
 export function LLMAgentTemplate({ application }: any) {
   return (
@@ -12,7 +13,7 @@ export function LLMAgentTemplate({ application }: any) {
       ) : (
         <RedirectToAnalysis />
       )}
-      {/* < ChatSpace /> */}
+      <ChatSpace />
       {/* < MessageBox application={application} /> */}
     </>
   );
