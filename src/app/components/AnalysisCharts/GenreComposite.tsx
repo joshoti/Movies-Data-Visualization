@@ -1,28 +1,24 @@
+import { useState } from "react";
 import { Flex, Title, Text } from "@mantine/core";
 import { CompositeChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import { marginTop, chartHeight, getDataFromApi } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import {
   genreCompositeData,
   GenreCompositeChartData,
 } from "../data/GenreCompositeData";
-import { api } from "../../api/axios-api";
 
 export default function GenreCompositeChart() {
-  // default initialization
-  let genreData: GenreCompositeChartData = [];
+  let [genreData, setGenreData] = useState<GenreCompositeChartData>([]);
 
-  api
-    .get("/analysis/sample-4")
-    .then(({ data }) => {
-      console.log("SAMPLE" + data);
-      genreData = data;
-    })
-    .catch((error) => {});
-
-  if (genreData.length === 0) {
-    genreData = genreCompositeData;
-  }
+  getDataFromApi({
+    endpoint: "/analysis/sample-4",
+    dataState: genreData,
+    setDataCallback: setGenreData,
+    defaultData: genreCompositeData,
+    baseCaseProperty: "length",
+    baseCaseValue: 0,
+  });
 
   return (
     <Flex direction={"column"}>
