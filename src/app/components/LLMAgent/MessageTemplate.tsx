@@ -38,7 +38,7 @@ function AgentMessage({ message }: Message) {
 function UserMessage({ message }: Message) {
   return (
     <Flex justify="end">
-      <Paper bg={"whitesmoke"} p={15} maw={400} radius="lg">
+      <Paper bg={"whitesmoke"} p={15} maw={500} radius="lg">
         {message}
       </Paper>
     </Flex>
