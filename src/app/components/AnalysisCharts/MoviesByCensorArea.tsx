@@ -63,7 +63,7 @@ export default function MoviesByCensorRatingAreaChart() {
         id="head"
         mt={marginTop / 2}
         mb={marginTop / 2}
-        className={classes.tableOfContentTitle}
+        className={classes.chartTitle}
       >
         Movies Released Per Censor Rating Over Time
       </Title>

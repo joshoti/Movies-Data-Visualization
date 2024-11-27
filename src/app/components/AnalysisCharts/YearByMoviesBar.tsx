@@ -54,7 +54,7 @@ export default function YearByMoviesBarChart() {
         id="head"
         mt={marginTop / 2}
         mb={marginTop / 2}
-        className={classes.tableOfContentTitle}
+        className={classes.chartTitle}
       >
         Yearly Trend
       </Title>

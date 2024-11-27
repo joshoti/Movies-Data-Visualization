@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { docsScrollOptions } from "../../pages/LandingPage";
 import { scrollToElement } from "../../utils/scoll";
 import { table } from "../data/Table";
+import { marginTop } from "../Analysis/Analysis";
 
 export function Query() {
   // To scroll to the top manually
@@ -26,12 +27,9 @@ export function Query() {
     </Table.Tr>
   ));
 
-  const marginTop = 40;
-
   return (
-    <Flex h={"100%"}>
-      {/* Content section */}
-      <Flex flex={1} direction="column">
+    <Flex>
+      <Flex direction="column">
         <Title
           id="head"
           mt={marginTop / 2}

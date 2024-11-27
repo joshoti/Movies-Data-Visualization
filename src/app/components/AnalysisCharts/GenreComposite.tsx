@@ -30,7 +30,7 @@ export default function GenreCompositeChart() {
         id="head"
         mt={marginTop / 2}
         mb={marginTop / 2}
-        className={classes.tableOfContentTitle}
+        className={classes.chartTitle}
       >
         Gross By Runtime vs Genre
       </Title>
