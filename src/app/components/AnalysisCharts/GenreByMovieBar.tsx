@@ -1,39 +1,31 @@
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import { marginTop, chartHeight, getDataFromApi } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
-import { api } from "../../api/axios-api";
 import {
   genreByMovieData,
   GenreByMovieChartData,
 } from "../data/GenreByMovieData";
 import { ChartTooltip, TooltipRecord } from "./Tooltip";
 import { ChartLegend } from "./Legend";
+import { useState } from "react";
 
 export default function GenreByMovieBarChart() {
-  // Default initialization
-  let genreData: GenreByMovieChartData = {
+  let [genreData, setGenreData] = useState<GenreByMovieChartData>({
     min_rating: 0,
     max_rating: 0,
     data: [],
-  };
+  });
 
-  api
-    .get("/analysis/sample-1")
-    .then(({ data }) => {
-      console.log("SAMPLE" + data);
-      genreData = data;
-    })
-    .catch((error) => {
-      // console.log("1 ERROR here");
-      // console.log(genreByMovieData.max_rating);
-      // genreData = genreByMovieData;
-    });
-
-  if (genreData.data.length === 0) {
-    genreData = genreByMovieData;
-  }
+  getDataFromApi({
+    endpoint: "/analysis/sample-1",
+    dataState: genreData,
+    setDataCallback: setGenreData,
+    defaultData: genreByMovieData,
+    baseCaseProperty: "max_rating",
+    baseCaseValue: 0,
+  });
 
   const formattedData = genreData.data.map((item) => ({
     genre: item.main_genre,
