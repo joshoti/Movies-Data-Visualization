@@ -26,6 +26,7 @@ export function LandingPageLayout() {
         <Outlet />
       </div>
 
+      {/* Bottom menu */}
       <NavigationBar />
     </Flex>
   );
