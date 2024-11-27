@@ -1,7 +1,7 @@
 import { Text, Flex, Paper } from "@mantine/core";
 import { RobotChatIcon } from "./RobotIcon";
 
-type MessageBubbleArgs = {
+export type MessageBubbleArgs = {
   role: string;
   message: string;
 };
