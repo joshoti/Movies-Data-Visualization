@@ -1,5 +1,6 @@
 import { Flex } from "@mantine/core";
 import { IconRobot } from "@tabler/icons-react";
+
 const robotColor = "black";
 
 export function RobotHeaderIcon() {
@@ -7,7 +8,8 @@ export function RobotHeaderIcon() {
 }
 
 export function RobotChatIcon() {
-  const backgroundRadius = 30;
+  const backgroundRadius = 35;
+
   return (
     <Flex
       justify="center"
@@ -21,7 +23,7 @@ export function RobotChatIcon() {
         width: backgroundRadius,
       }}
     >
-      <IconRobot size={20} color={robotColor} />
+      <IconRobot size={backgroundRadius - 10} color={robotColor} />
     </Flex>
   );
 }
