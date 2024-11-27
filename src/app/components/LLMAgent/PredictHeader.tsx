@@ -7,12 +7,7 @@ export function PredictHeader() {
   return (
     <Flex direction="column">
       <Flex align="center" justify="center">
-        <Title
-          id="head"
-          mt={marginTop / 2}
-          mb={marginTop / 2}
-          className={classes.title}
-        >
+        <Title mt={marginTop / 2} mb={marginTop / 2} className={classes.title}>
           Predict
         </Title>
         <RobotHeaderIcon />
