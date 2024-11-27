@@ -7,14 +7,16 @@ type MessageBubbleArgs = {
 };
 
 export function MessageBubble({ role, message }: MessageBubbleArgs) {
+  const messageMargin = 20;
+
   return (
-    <>
+    <div style={{ marginTop: messageMargin, marginBottom: messageMargin }}>
       {role === "user" ? (
         <UserMessage message={message} />
       ) : (
         <AgentMessage message={message} />
       )}
-    </>
+    </div>
   );
 }
 
@@ -26,7 +28,7 @@ function AgentMessage({ message }: Message) {
   return (
     <Flex align="flex-start">
       <RobotChatIcon />
-      <Text fw={450} fz={17}>
+      <Text flex={1} style={{ textAlign: "justify" }} fw={450} fz={17}>
         {message}
       </Text>
     </Flex>
@@ -36,7 +38,7 @@ function AgentMessage({ message }: Message) {
 function UserMessage({ message }: Message) {
   return (
     <Flex justify="end">
-      <Paper p={15} maw={400} radius="lg">
+      <Paper bg={"whitesmoke"} p={15} maw={400} radius="lg">
         {message}
       </Paper>
     </Flex>
