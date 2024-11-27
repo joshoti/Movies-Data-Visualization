@@ -13,9 +13,10 @@ export function RobotChatIcon() {
       justify="center"
       align="center"
       style={{
+        marginRight: 10,
         backgroundColor: "whitesmoke",
         border: "1px solid gray",
-        borderRadius: 100,
+        borderRadius: backgroundRadius / 2,
         height: backgroundRadius,
         width: backgroundRadius,
       }}
