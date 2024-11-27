@@ -24,7 +24,7 @@ export function LLMAgentTemplate({ application }: any) {
           <RedirectToAnalysis />
         )}
         <Divider />
-        <ChatSpace />
+        <ChatSpace application={application} />
       </div>
       <InputField application={application} />
     </Flex>
