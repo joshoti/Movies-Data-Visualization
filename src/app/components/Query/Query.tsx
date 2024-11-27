@@ -1,17 +1,9 @@
 import { Text, Flex, Title, Table, Box } from "@mantine/core";
 import classes from "./Query.module.css";
-import { useEffect } from "react";
-import { docsScrollOptions } from "../../pages/LandingPage";
-import { scrollToElement } from "../../utils/scoll";
 import { table } from "../data/Table";
 import { marginTop } from "../Analysis/Analysis";
 
 export function Query() {
-  // To scroll to the top manually
-  useEffect(() => {
-    scrollToElement("head", docsScrollOptions);
-  });
-
   const tableRows = table.map((row) => (
     <Table.Tr key={row.Movie_Title}>
       <Table.Td>{row.Movie_Title}</Table.Td>

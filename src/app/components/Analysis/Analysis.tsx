@@ -1,10 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel } from "@mantine/carousel";
 import { Flex, Title } from "@mantine/core";
 import classes from "./Analysis.module.css";
-import { docsScrollOptions } from "../../pages/LandingPage";
-import { scrollToElement } from "../../utils/scoll";
 import GenreByMovieBarChart from "../AnalysisCharts/GenreByMovieBar";
 import RatingByRuntimeAreaChart from "../AnalysisCharts/RatingByRuntimeArea";
 import YearByMoviesBarChart from "../AnalysisCharts/YearByMoviesBar";
@@ -17,11 +15,6 @@ export const chartHeight = 550;
 export const toolTipSpacing = 30;
 
 export function Analysis() {
-  // To scroll to the top manually
-  useEffect(() => {
-    scrollToElement("head", docsScrollOptions);
-  });
-
   const autoplay = useRef(Autoplay({ delay: 4000 }));
 
   return (
