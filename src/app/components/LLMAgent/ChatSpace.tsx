@@ -1,8 +1,18 @@
+import { useContext } from "react";
 import { MessageBubble } from "./MessageTemplate";
+import { ChatContext } from "../../hooks/ChatProvider";
 
 export const padding = 150;
 
-export function ChatSpace() {
+export const storageOption = sessionStorage;
+
+export function ChatSpace({ application }: any) {
+  const chatContext = useContext(ChatContext);
+  const chatHistory =
+    application === "probe"
+      ? chatContext.probeChatHistory
+      : chatContext.predictChatHistory;
+
   const sampleMessages = [
     { role: "user", message: "How are you today?" },
     { role: "agent", message: "Piss off" },
@@ -45,9 +55,12 @@ export function ChatSpace() {
         paddingRight: padding,
       }}
     >
-      {sampleMessages.map(({ role, message }) => (
+      {chatHistory.map(({ role, message }) => (
         <MessageBubble role={role} message={message} />
       ))}
+      {/* {sampleMessages.map(({ role, message }) => (
+          <MessageBubble role={role} message={message} />
+        ))} */}
     </div>
   );
 }
