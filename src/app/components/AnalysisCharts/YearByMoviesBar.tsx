@@ -1,28 +1,28 @@
+import { useState } from "react";
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import { marginTop, chartHeight, getDataFromApi } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import { getColorScale } from "../../utils/colorScale";
 import { movieByYearData, MovieByYearChartData } from "../data/MovieByYearData";
-import { api } from "../../api/axios-api";
 import { TooltipRecord, ChartTooltip } from "./Tooltip";
 import { ChartLegend } from "./Legend";
 
 export default function YearByMoviesBarChart() {
-  // Default initialization
-  let yearData: MovieByYearChartData = { min_gross: 0, max_gross: 0, data: [] };
+  let [yearData, setYearData] = useState<MovieByYearChartData>({
+    min_gross: 0,
+    max_gross: 0,
+    data: [],
+  });
 
-  api
-    .get("/analysis/sample-3")
-    .then(({ data }) => {
-      console.log("SAMPLE" + data);
-      yearData = data;
-    })
-    .catch((error) => {});
-
-  if (yearData.data.length === 0) {
-    yearData = movieByYearData;
-  }
+  getDataFromApi({
+    endpoint: "/analysis/sample-3",
+    dataState: yearData,
+    setDataCallback: setYearData,
+    defaultData: movieByYearData,
+    baseCaseProperty: "max_gross",
+    baseCaseValue: 0,
+  });
 
   const formattedData = yearData.data.map((item) => ({
     total_gross: item.total_gross,
