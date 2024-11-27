@@ -5,3 +5,7 @@
 .regularText {
   font-size: 18px;
 }
+.input {
+  outline: 1px solid gray;
+  outline-offset: -2px;
+}
