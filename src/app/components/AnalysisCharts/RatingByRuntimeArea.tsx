@@ -1,28 +1,24 @@
+import { useState } from "react";
 import { Flex, Title, Text } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
-import { marginTop, chartHeight } from "../Analysis/Analysis";
+import { marginTop, chartHeight, getDataFromApi } from "../Analysis/Analysis";
 import classes from "../Analysis/Analysis.module.css";
 import {
   RatingByRuntimeChartData,
   ratingByRuntimeData,
 } from "../data/RatingByRuntimeData";
-import { api } from "../../api/axios-api";
 
 export default function RatingByRuntimeAreaChart() {
-  // default initialization
-  let runtimeData: RatingByRuntimeChartData = [];
+  let [runtimeData, setRuntimeData] = useState<RatingByRuntimeChartData>([]);
 
-  api
-    .get("/analysis/sample-2")
-    .then(({ data }) => {
-      console.log("SAMPLE" + data);
-      runtimeData = data;
-    })
-    .catch((error) => {});
-
-  if (runtimeData.length === 0) {
-    runtimeData = ratingByRuntimeData;
-  }
+  getDataFromApi({
+    endpoint: "/analysis/sample-2",
+    dataState: runtimeData,
+    setDataCallback: setRuntimeData,
+    defaultData: ratingByRuntimeData,
+    baseCaseProperty: "length",
+    baseCaseValue: 0,
+  });
 
   return (
     <Flex direction={"column"}>
