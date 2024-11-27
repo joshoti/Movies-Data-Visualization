@@ -24,9 +24,11 @@ type Message = {
 
 function AgentMessage({ message }: Message) {
   return (
-    <Flex align="center">
+    <Flex align="flex-start">
       <RobotChatIcon />
-      <MessageBox message={message} />
+      <Text fw={450} fz={17}>
+        {message}
+      </Text>
     </Flex>
   );
 }
@@ -34,11 +36,9 @@ function AgentMessage({ message }: Message) {
 function UserMessage({ message }: Message) {
   return (
     <Flex justify="end">
-      <MessageBox message={message} />
+      <Paper p={15} maw={400} radius="lg">
+        {message}
+      </Paper>
     </Flex>
   );
-}
-
-function MessageBox({ message }: Message) {
-  return <Paper radius="md">{message}</Paper>;
 }
