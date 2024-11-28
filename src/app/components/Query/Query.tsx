@@ -1,6 +1,6 @@
 import { Text, Flex, Title, Table, Box } from "@mantine/core";
 import classes from "./Query.module.css";
-import { table } from "../data/Table";
+import { table } from "./Table";
 import { marginTop } from "../Analysis/Analysis";
 import QueryBox from "./QueryBox";
 
