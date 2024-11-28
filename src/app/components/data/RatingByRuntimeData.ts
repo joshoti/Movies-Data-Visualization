@@ -1,9 +1,9 @@
-type GenreDataRecord = {
+type RuntimeDataRecord = {
   runtime: number;
   rating: number;
 };
 
-export type RatingByRuntimeChartData = Array<GenreDataRecord>;
+export type RatingByRuntimeChartData = Array<RuntimeDataRecord>;
 export const ratingByRuntimeData: RatingByRuntimeChartData = [
   {
     rating: 7.8,
