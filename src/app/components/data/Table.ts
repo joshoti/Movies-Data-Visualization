@@ -1,3 +1,15 @@
+export const tableColumnNames = [
+  "Title",
+  "Year",
+  "Director",
+  "Actors",
+  "Rating",
+  "Runtime",
+  "Censor",
+  "Total Gross",
+  "Main Genre",
+];
+
 export const table = [
   {
     Movie_Title: "Kantara",
