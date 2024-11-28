@@ -3,11 +3,21 @@ import { Button, Group, Textarea } from "@mantine/core";
 import classes from "./LLMAgent.module.css";
 import { padding } from "./ChatSpace";
 import { ChatContext } from "../../hooks/ChatProvider";
+import { api } from "../../api/axios-api";
 
 export function InputField({ application }: any) {
   const [inputValue, setInputValue] = useState("");
 
   const chatContext = useContext(ChatContext);
+
+  const communicateWithAgent = (message: string) => {
+    api
+      .post(`/${application}`, { prompt: message })
+      .then(({ data }) => {
+        addMessage({ role: "agent", message: data, application: application });
+      })
+      .catch((error) => {});
+  };
 
   const addMessage = ({ role, message, application }: any) => {
     chatContext.addMessage({ role, message, application });
@@ -29,6 +39,7 @@ export function InputField({ application }: any) {
         message: inputValue,
         application: application,
       });
+      communicateWithAgent(inputValue);
       setInputValue("");
     }
   };
