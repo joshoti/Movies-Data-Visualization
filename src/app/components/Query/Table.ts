@@ -10,6 +10,8 @@ export const tableColumnNames = [
   "Main Genre",
 ];
 
+export const operators = ["=", "!=", ">", "<", "LIKE"];
+
 export const table = [
   {
     Movie_Title: "Kantara",
