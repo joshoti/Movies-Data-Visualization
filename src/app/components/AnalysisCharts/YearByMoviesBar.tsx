@@ -9,7 +9,7 @@ import { TooltipRecord, ChartTooltip } from "./Tooltip";
 import { ChartLegend } from "./Legend";
 
 export default function YearByMoviesBarChart() {
-  let [yearData, setYearData] = useState<MovieByYearChartData>({
+  const [yearData, setYearData] = useState<MovieByYearChartData>({
     min_gross: 0,
     max_gross: 0,
     data: [],

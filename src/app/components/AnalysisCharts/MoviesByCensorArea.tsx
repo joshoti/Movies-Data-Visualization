@@ -9,7 +9,7 @@ import {
 } from "../data/MoviesByCensorData";
 
 export default function MoviesByCensorRatingAreaChart() {
-  let [censorData, setCensorData] = useState<MoviesByCensorChartData>([]);
+  const [censorData, setCensorData] = useState<MoviesByCensorChartData>([]);
 
   getDataFromApi({
     endpoint: "/analysis/sample-5",

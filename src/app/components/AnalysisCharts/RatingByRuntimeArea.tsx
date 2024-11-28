@@ -9,7 +9,7 @@ import {
 } from "../data/RatingByRuntimeData";
 
 export default function RatingByRuntimeAreaChart() {
-  let [runtimeData, setRuntimeData] = useState<RatingByRuntimeChartData>([]);
+  const [runtimeData, setRuntimeData] = useState<RatingByRuntimeChartData>([]);
 
   getDataFromApi({
     endpoint: "/analysis/sample-2",

@@ -12,7 +12,7 @@ import { ChartTooltip, TooltipRecord } from "./Tooltip";
 import { ChartLegend } from "./Legend";
 
 export default function GenreByMovieBarChart() {
-  let [genreData, setGenreData] = useState<GenreByMovieChartData>({
+  const [genreData, setGenreData] = useState<GenreByMovieChartData>({
     min_rating: 0,
     max_rating: 0,
     data: [],

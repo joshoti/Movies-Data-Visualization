@@ -9,7 +9,7 @@ import {
 } from "../data/GenreCompositeData";
 
 export default function GenreCompositeChart() {
-  let [genreData, setGenreData] = useState<GenreCompositeChartData>([]);
+  const [genreData, setGenreData] = useState<GenreCompositeChartData>([]);
 
   getDataFromApi({
     endpoint: "/analysis/sample-4",
