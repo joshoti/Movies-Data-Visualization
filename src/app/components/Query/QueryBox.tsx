@@ -48,6 +48,15 @@ export default function QueryBox() {
     setWhereClauses(updatedClauses);
   };
 
+  const flattenWhereClause = (where: whereClause) => {
+    const emptyWhereClause = "AND-Title-=-";
+    const whereClause = `${where.logic}-${where.field}-${where.operator}-${where.value}`;
+    if (whereClause === emptyWhereClause) {
+      return "";
+    }
+    return whereClause;
+  };
+
   const submitQuery = ({ selectFields, whereClauses }: any) => {
     console.log({ selectFields, whereClauses });
     // api
