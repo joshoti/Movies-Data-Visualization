@@ -12,18 +12,29 @@ import {
 import { operators, tableColumnNames } from "./Table";
 import { api } from "../../api/axios-api";
 
+type whereClause = {
+  field: string;
+  operator: string;
+  value: string;
+  logic?: string;
+};
+
+const defaultWhereClause = {
+  field: `${tableColumnNames[0]}`,
+  operator: `${operators[0]}`,
+  value: "",
+  logic: "AND",
+};
+
 export default function QueryBox() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectFields, setSelectFields] = useState<string[]>([]);
-  const [whereClauses, setWhereClauses] = useState<
-    { field: string; operator: string; value: string; logic?: string }[]
-  >([{ field: "", operator: "", value: "", logic: "AND" }]);
+  const [whereClauses, setWhereClauses] = useState<whereClause[]>([
+    { ...defaultWhereClause },
+  ]);
 
   const addWhereClause = () => {
-    setWhereClauses([
-      ...whereClauses,
-      { field: "", operator: "", value: "", logic: "AND" },
-    ]);
+    setWhereClauses([...whereClauses, { ...defaultWhereClause }]);
   };
 
   const removeWhereClause = (index: number) => {
