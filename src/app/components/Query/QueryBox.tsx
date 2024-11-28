@@ -9,7 +9,7 @@ import {
   Box,
   Text,
 } from "@mantine/core";
-import { tableColumnNames } from "./Table";
+import { operators, tableColumnNames } from "./Table";
 import { api } from "../../api/axios-api";
 
 export default function QueryBox() {
@@ -84,7 +84,7 @@ export default function QueryBox() {
                 />
                 <Select
                   placeholder="Operator"
-                  data={["=", "!=", ">", "<", "LIKE"]}
+                  data={operators}
                   value={clause.operator}
                   onChange={(value) =>
                     handleWhereChange(index, "operator", value!)
