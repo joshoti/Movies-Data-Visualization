@@ -9,35 +9,41 @@ import {
   Box,
   Text,
 } from "@mantine/core";
-import { tableColumnNames } from "../data/Table";
+import { tableColumnNames } from "./Table";
+import { api } from "../../api/axios-api";
 
 export default function QueryBox() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectFields, setSelectFields] = useState<string[]>([]);
   const [whereClauses, setWhereClauses] = useState<
-    { field: string; operator: string; value: string }[]
-  >([{ field: "", operator: "", value: "" }]);
-
-  const resetForm = () => {
-    setSelectFields([]);
-    setWhereClauses([{ field: "", operator: "", value: "" }]);
-  };
+    { field: string; operator: string; value: string; logic?: string }[]
+  >([{ field: "", operator: "", value: "", logic: "AND" }]);
 
   const addWhereClause = () => {
-    setWhereClauses([...whereClauses, { field: "", operator: "", value: "" }]);
+    setWhereClauses([
+      ...whereClauses,
+      { field: "", operator: "", value: "", logic: "AND" },
+    ]);
   };
 
   const removeWhereClause = (index: number) => {
-    if (whereClauses.length > 1) {
-      const updatedClauses = whereClauses.filter((_, i) => i !== index);
-      setWhereClauses(updatedClauses);
-    }
+    const updatedClauses = whereClauses.filter((_, i) => i !== index);
+    setWhereClauses(updatedClauses);
   };
 
   const handleWhereChange = (index: number, key: string, value: string) => {
     const updatedClauses = [...whereClauses];
     updatedClauses[index][key as keyof (typeof whereClauses)[0]] = value;
     setWhereClauses(updatedClauses);
+  };
+
+  const submitQuery = ({ selectFields, whereClauses }: any) => {
+    console.log({ selectFields, whereClauses });
+    // api
+    // .get("/query", { prompt: message })
+    // .then(({ data }) => {
+    // })
+    // .catch((error) => {});
   };
 
   return (
@@ -48,14 +54,14 @@ export default function QueryBox() {
         <Box>
           <Group mb="sm">
             <Button onClick={() => setIsOpen(false)}>Close Query</Button>
-            <Button onClick={() => console.log({ selectFields, whereClauses })}>
+            <Button onClick={() => submitQuery({ selectFields, whereClauses })}>
               Execute
             </Button>
           </Group>
           <Box mb="lg">
             <MultiSelect
               label="Select"
-              placeholder="Pick columns"
+              placeholder="Pick columns. Leave empty or select all to view all columns"
               data={tableColumnNames}
               clearable
               searchable
@@ -91,6 +97,17 @@ export default function QueryBox() {
                     handleWhereChange(index, "value", event.currentTarget.value)
                   }
                 />
+                {index > 0 && (
+                  <Select
+                    placeholder="Logic"
+                    data={["AND", "OR"]}
+                    value={clause.logic}
+                    onChange={(value) =>
+                      handleWhereChange(index, "logic", value!)
+                    }
+                    style={{ width: 80 }}
+                  />
+                )}
                 <Button
                   variant="outline"
                   onClick={addWhereClause}
@@ -98,9 +115,20 @@ export default function QueryBox() {
                 >
                   <IconPlus size={16} />
                 </Button>
+                <Button
+                  variant="outline"
+                  color="red"
+                  onClick={() => removeWhereClause(index)}
+                  size="compact-md"
+                >
+                  <IconMinus size={16} />
+                </Button>
               </Group>
             ))}
           </Box>
+          <Button mt={10} variant="light" onClick={addWhereClause}>
+            Add new clause
+          </Button>
         </Box>
       )}
     </Box>
