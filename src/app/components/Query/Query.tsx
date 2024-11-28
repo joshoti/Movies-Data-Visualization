@@ -2,6 +2,7 @@ import { Text, Flex, Title, Table, Box } from "@mantine/core";
 import classes from "./Query.module.css";
 import { table } from "../data/Table";
 import { marginTop } from "../Analysis/Analysis";
+import QueryBox from "./QueryBox";
 
 export function Query() {
   const tableRows = table.map((row) => (
@@ -33,6 +34,7 @@ export function Query() {
         <Text mb={10} className={classes.regularText}>
           Query the table
         </Text>
+        <QueryBox />
         <Box className={classes.table}>
           <Table withColumnBorders verticalSpacing="sm" horizontalSpacing="md">
             <Table.Thead>
