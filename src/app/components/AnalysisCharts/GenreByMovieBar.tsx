@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Flex, Text, Title } from "@mantine/core";
 import { BarChart } from "@mantine/charts";
 import { marginTop, chartHeight, getDataFromApi } from "../Analysis/Analysis";
@@ -9,7 +10,6 @@ import {
 } from "../data/GenreByMovieData";
 import { ChartTooltip, TooltipRecord } from "./Tooltip";
 import { ChartLegend } from "./Legend";
-import { useState } from "react";
 
 export default function GenreByMovieBarChart() {
   let [genreData, setGenreData] = useState<GenreByMovieChartData>({

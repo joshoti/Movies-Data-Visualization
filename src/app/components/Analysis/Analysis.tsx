@@ -8,11 +8,33 @@ import RatingByRuntimeAreaChart from "../AnalysisCharts/RatingByRuntimeArea";
 import YearByMoviesBarChart from "../AnalysisCharts/YearByMoviesBar";
 import GenreCompositeChart from "../AnalysisCharts/GenreComposite";
 import MoviesByCensorRatingAreaChart from "../AnalysisCharts/MoviesByCensorArea";
+import { api } from "../../api/axios-api";
 
 export const marginTop = 40;
 export const toolTipFontWeight = 600;
 export const chartHeight = 550;
 export const toolTipSpacing = 30;
+
+export const getDataFromApi = ({
+  endpoint,
+  dataState,
+  setDataCallback,
+  defaultData,
+  baseCaseProperty,
+  baseCaseValue,
+}: any) => {
+  if (dataState[baseCaseProperty] !== baseCaseValue) {
+    return;
+  }
+  api
+    .get(endpoint)
+    .then(({ data }) => {
+      setDataCallback(data);
+    })
+    .catch((error) => {
+      setDataCallback(defaultData);
+    });
+};
 
 export function Analysis() {
   const autoplay = useRef(Autoplay({ delay: 4000 }));
