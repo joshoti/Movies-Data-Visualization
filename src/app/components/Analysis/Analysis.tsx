@@ -55,12 +55,11 @@ export function Analysis() {
         <Carousel
           classNames={classes}
           loop
-          // withIndicators
           height={chartHeight}
           draggable={false}
-          // plugins={[autoplay.current]}
+          plugins={[autoplay.current]}
           // onMouseEnter={autoplay.current.stop}
-          // onMouseLeave={autoplay.current.reset}
+          // onMouseLeave={() => autoplay.current.play(true)}
         >
           <Carousel.Slide>
             <GenreByMovieBarChart />
