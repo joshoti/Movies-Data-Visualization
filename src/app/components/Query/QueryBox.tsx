@@ -49,11 +49,7 @@ export default function QueryBox() {
   };
 
   const flattenWhereClause = (where: whereClause) => {
-    const emptyWhereClause = "AND-Title-=-";
     const whereClause = `${where.logic}-${where.field}-${where.operator}-${where.value}`;
-    if (whereClause === emptyWhereClause) {
-      return "";
-    }
     return whereClause;
   };
 
@@ -108,6 +104,7 @@ export default function QueryBox() {
                   placeholder="Field"
                   data={tableColumnNames}
                   value={clause.field}
+                  allowDeselect={false}
                   onChange={(value) =>
                     handleWhereChange(index, "field", value!)
                   }
@@ -116,6 +113,7 @@ export default function QueryBox() {
                   placeholder="Operator"
                   data={operators}
                   value={clause.operator}
+                  allowDeselect={false}
                   onChange={(value) =>
                     handleWhereChange(index, "operator", value!)
                   }
@@ -132,6 +130,7 @@ export default function QueryBox() {
                     placeholder="Logic"
                     data={["AND", "OR"]}
                     value={clause.logic}
+                    allowDeselect={false}
                     onChange={(value) =>
                       handleWhereChange(index, "logic", value!)
                     }
