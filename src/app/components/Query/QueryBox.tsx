@@ -20,7 +20,7 @@ type whereClause = {
 };
 
 const defaultWhereClause = {
-  field: `${tableColumnNames[0]}`,
+  field: `${tableColumnNames[0].value}`,
   operator: `${operators[0]}`,
   value: "",
   logic: "AND",
