@@ -20,6 +20,7 @@ import {
 import { operators, defaultTable, tableColumnNames } from "./Table";
 import { QueryTableContext } from "../../hooks/QueryTableProvider";
 import { api } from "../../api/axios-api";
+import { notifications } from "@mantine/notifications";
 
 type whereClause = {
   field: string;
@@ -88,7 +89,13 @@ export default function QueryBox() {
       .then(({ data }) => {
         tableContext.setTableData(data);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        notifications.show({
+          color: "red",
+          title: "Error Occurred!",
+          message: "The backend might not be connected, hence the error",
+        });
+      });
   };
 
   return (
