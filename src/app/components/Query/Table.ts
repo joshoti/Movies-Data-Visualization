@@ -1,16 +1,16 @@
 export const tableColumnNames = [
-  "Title",
-  "Year",
-  "Director",
-  "Actors",
-  "Rating",
-  "Runtime",
-  "Censor",
-  "Total Gross",
-  "Main Genre",
+  { value: "title", label: "Title" },
+  { value: "year", label: "Year" },
+  { value: "director", label: "Director" },
+  { value: "actor", label: "Actors" },
+  { value: "rating", label: "Rating" },
+  { value: "runtime", label: "Runtime" },
+  { value: "censor", label: "Censor" },
+  { value: "gross", label: "Total Gross" },
+  { value: "main_genre", label: "Main Genre" },
 ];
 
-export const operators = ["=", "!=", ">", "<", "LIKE"];
+export const operators = ["=", "!=", ">", ">=", "<", "<=", "LIKE"];
 
 export const table = [
   {
