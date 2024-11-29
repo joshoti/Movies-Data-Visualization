@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { IconPlus, IconMinus } from "@tabler/icons-react";
 import {
   Button,
@@ -9,7 +9,8 @@ import {
   Box,
   Text,
 } from "@mantine/core";
-import { operators, tableColumnNames } from "./Table";
+import { operators, defaultTable, tableColumnNames } from "./Table";
+import { QueryTableContext } from "../../hooks/QueryTableProvider";
 import { api } from "../../api/axios-api";
 
 type whereClause = {
@@ -27,6 +28,8 @@ const defaultWhereClause = {
 };
 
 export default function QueryBox() {
+  const tableContext = useContext(QueryTableContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectFields, setSelectFields] = useState<string[]>([]);
   const [whereClauses, setWhereClauses] = useState<whereClause[]>([
@@ -60,6 +63,7 @@ export default function QueryBox() {
 
   const submitQuery = ({ selectFields, whereClauses }: any) => {
     if (selectFields.length === 0 && whereClauses.length === 0) {
+      tableContext.setTableData(defaultTable);
       return;
     }
     console.log({ selectFields, whereClauses });
@@ -73,7 +77,10 @@ export default function QueryBox() {
           where: whereStatement,
         },
       })
-      .then(({ data }) => {})
+      .then(({ data }) => {
+        console.log(data);
+        tableContext.setTableData(data);
+      })
       .catch((error) => {});
   };
 
