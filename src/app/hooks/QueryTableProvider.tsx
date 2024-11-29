@@ -16,7 +16,7 @@ export const TableProvider = ({ children }: any) => {
 
   const isColumnContained = (columnName: string) => {
     if (tableData.length === 0) {
-      return false;
+      return true;
     }
     return tableData[0].hasOwnProperty(columnName);
   };
