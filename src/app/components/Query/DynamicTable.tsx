@@ -27,13 +27,19 @@ export function DynamicTable() {
     <Table withColumnBorders verticalSpacing="sm" horizontalSpacing="md">
       <Table.Thead>
         <Table.Tr className={classes.tableHeader}>
-          {Object.keys(TableHeaderMap).map((column) =>
-            tableContext.isColumnContained(column) ? (
-              <Table.Th>
-                {TableHeaderMap[column as keyof TableHeaders]}
-              </Table.Th>
-            ) : null
-          )}
+          {/* If query result is empty, print column headers. Else, print
+          column header in the order received from query */}
+          {tableContext.tableData.length === 0
+            ? Object.keys(TableHeaderMap).map((column) => (
+                <Table.Th>
+                  {TableHeaderMap[column as keyof TableHeaders]}
+                </Table.Th>
+              ))
+            : Object.keys(tableContext.tableData[0]).map((column) => (
+                <Table.Th>
+                  {TableHeaderMap[column as keyof TableHeaders]}
+                </Table.Th>
+              ))}
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody className={classes.tableBody}>{tableRows}</Table.Tbody>
