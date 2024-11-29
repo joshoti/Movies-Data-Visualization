@@ -33,6 +33,11 @@ export default function QueryBox() {
     { ...defaultWhereClause },
   ]);
 
+  const resetForm = () => {
+    setSelectFields([]);
+    setWhereClauses([]);
+  };
+
   const addWhereClause = () => {
     setWhereClauses([...whereClauses, { ...defaultWhereClause }]);
   };
@@ -80,6 +85,7 @@ export default function QueryBox() {
         <Box>
           <Group mb="sm">
             <Button onClick={() => setIsOpen(false)}>Close Query</Button>
+            <Button onClick={resetForm}>Clear Query</Button>
             <Button onClick={() => submitQuery({ selectFields, whereClauses })}>
               Execute
             </Button>
