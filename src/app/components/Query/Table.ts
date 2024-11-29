@@ -1,3 +1,6 @@
+/**
+ * For the QueryBox Field dropdown menu
+ */
 export const tableColumnNames = [
   { value: "title", label: "Title" },
   { value: "year", label: "Year" },
@@ -10,7 +13,27 @@ export const tableColumnNames = [
   { value: "main_genre", label: "Main Genre" },
 ];
 
+/**
+ * For the QueryBox Operators dropdown menu
+ */
 export const operators = ["=", "!=", ">", ">=", "<", "<=", "LIKE"];
+
+/**
+ * Provides an interface for the DynamicTable to check what headers to
+ * display and how to display them
+ */
+export const TableHeaderMap = {
+  Movie_Title: "Movie Title",
+  Year: "Year",
+  Director: "Director",
+  Actors: "Actors",
+  Rating: "Rating",
+  "Runtime(Mins)": "Runtime (Mins)",
+  Censor: "Censor",
+  Total_Gross: "Total Gross",
+  main_genre: "Main Genre",
+  side_genre: "Side Genre",
+};
 
 export type TableHeaders = {
   Movie_Title?: string;
