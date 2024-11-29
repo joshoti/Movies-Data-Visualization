@@ -48,7 +48,7 @@ export type TableHeaders = {
   side_genre?: string;
 };
 
-export const table = [
+export const defaultTable = [
   {
     Movie_Title: "Kantara",
     Year: 2022,

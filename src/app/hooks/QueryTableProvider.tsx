@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
-import { table } from "../components/Query/Table";
-import { TableHeaders } from "../components/Query/Table";
+import { defaultTable, TableHeaders } from "../components/Query/Table";
 
 type QueryTableContextT = {
   tableData: TableHeaders[];
@@ -13,7 +12,7 @@ export const QueryTableContext = createContext<QueryTableContextT>(
 );
 
 export const TableProvider = ({ children }: any) => {
-  const [tableData, setTableData] = useState<TableHeaders[]>(table);
+  const [tableData, setTableData] = useState<TableHeaders[]>(defaultTable);
 
   const isColumnContained = (columnName: string) => {
     if (tableData.length === 0) {
