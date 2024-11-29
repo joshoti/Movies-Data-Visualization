@@ -3,6 +3,7 @@ import classes from "./Query.module.css";
 import { table } from "./Table";
 import { marginTop } from "../Analysis/Analysis";
 import QueryBox from "./QueryBox";
+import { DynamicTable } from "./DynamicTable";
 
 export function Query() {
   const tableRows = table.map((row) => (
@@ -36,7 +37,8 @@ export function Query() {
         </Text>
         <QueryBox />
         <Box className={classes.table}>
-          <Table withColumnBorders verticalSpacing="sm" horizontalSpacing="md">
+          <DynamicTable />
+          {/* <Table withColumnBorders verticalSpacing="sm" horizontalSpacing="md">
             <Table.Thead>
               <Table.Tr className={classes.tableHeader}>
                 <Table.Th>Movie Title</Table.Th>
@@ -52,7 +54,7 @@ export function Query() {
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody className={classes.tableBody}>{tableRows}</Table.Tbody>
-          </Table>
+          </Table> */}
         </Box>
       </Flex>
     </Flex>
