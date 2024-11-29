@@ -1,5 +1,12 @@
 import { useState, useContext } from "react";
-import { IconPlus, IconMinus } from "@tabler/icons-react";
+import {
+  IconPlus,
+  IconMinus,
+  IconPlayerPlay,
+  IconFilterCancel,
+  IconFilterSearch,
+  IconLogout,
+} from "@tabler/icons-react";
 import {
   Button,
   MultiSelect,
@@ -8,6 +15,7 @@ import {
   Group,
   Box,
   Text,
+  Tooltip,
 } from "@mantine/core";
 import { operators, defaultTable, tableColumnNames } from "./Table";
 import { QueryTableContext } from "../../hooks/QueryTableProvider";
@@ -29,6 +37,8 @@ const defaultWhereClause = {
 
 export default function QueryBox() {
   const tableContext = useContext(QueryTableContext);
+
+  const inButtonIconSize = 15;
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectFields, setSelectFields] = useState<string[]>([]);
@@ -84,13 +94,33 @@ export default function QueryBox() {
   return (
     <Box mb="md">
       {!isOpen ? (
-        <Button onClick={() => setIsOpen(true)}>Query</Button>
+        <Button
+          leftSection={<IconFilterSearch size={inButtonIconSize} />}
+          onClick={() => setIsOpen(true)}
+        >
+          Query
+        </Button>
       ) : (
         <Box>
           <Group mb="sm">
-            <Button onClick={() => setIsOpen(false)}>Close Query</Button>
-            <Button onClick={resetForm}>Clear Query</Button>
-            <Button onClick={() => submitQuery({ selectFields, whereClauses })}>
+            <Button
+              onClick={() => setIsOpen(false)}
+              leftSection={<IconLogout size={inButtonIconSize} />}
+            >
+              Close Query
+            </Button>
+            <Tooltip label="click 'Clear Query' then 'Execute' to get original table">
+              <Button
+                leftSection={<IconFilterCancel size={inButtonIconSize} />}
+                onClick={resetForm}
+              >
+                Clear Query (?)
+              </Button>
+            </Tooltip>
+            <Button
+              leftSection={<IconPlayerPlay size={inButtonIconSize} />}
+              onClick={() => submitQuery({ selectFields, whereClauses })}
+            >
               Execute
             </Button>
           </Group>
@@ -165,7 +195,12 @@ export default function QueryBox() {
               </Group>
             ))}
           </Box>
-          <Button mt={10} variant="light" onClick={addWhereClause}>
+          <Button
+            mt={10}
+            variant="light"
+            onClick={addWhereClause}
+            leftSection={<IconPlus size={inButtonIconSize} />}
+          >
             Add new clause
           </Button>
         </Box>
