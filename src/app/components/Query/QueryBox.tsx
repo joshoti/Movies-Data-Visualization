@@ -58,12 +58,22 @@ export default function QueryBox() {
   };
 
   const submitQuery = ({ selectFields, whereClauses }: any) => {
+    if (selectFields.length === 0 && whereClauses.length === 0) {
+      return;
+    }
     console.log({ selectFields, whereClauses });
-    // api
-    // .get("/query", { prompt: message })
-    // .then(({ data }) => {
-    // })
-    // .catch((error) => {});
+    console.log(selectFields.toString());
+    const whereStatement = whereClauses.map(flattenWhereClause).toString();
+    console.log(whereStatement);
+    api
+      .get("/query", {
+        params: {
+          select: selectFields.toString(),
+          where: whereStatement,
+        },
+      })
+      .then(({ data }) => {})
+      .catch((error) => {});
   };
 
   return (
