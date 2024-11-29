@@ -66,10 +66,8 @@ export default function QueryBox() {
       tableContext.setTableData(defaultTable);
       return;
     }
-    console.log({ selectFields, whereClauses });
-    console.log(selectFields.toString());
+
     const whereStatement = whereClauses.map(flattenWhereClause).toString();
-    console.log(whereStatement);
     api
       .get("/query", {
         params: {
@@ -78,7 +76,6 @@ export default function QueryBox() {
         },
       })
       .then(({ data }) => {
-        console.log(data);
         tableContext.setTableData(data);
       })
       .catch((error) => {});
