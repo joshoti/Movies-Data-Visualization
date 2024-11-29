@@ -12,6 +12,19 @@ export const tableColumnNames = [
 
 export const operators = ["=", "!=", ">", ">=", "<", "<=", "LIKE"];
 
+export type TableHeaders = {
+  Movie_Title?: string;
+  Year?: number;
+  Director?: string;
+  Actors?: string;
+  Rating?: number;
+  "Runtime(Mins)"?: number;
+  Censor?: string;
+  Total_Gross?: string;
+  main_genre?: string;
+  side_genre?: string;
+};
+
 export const table = [
   {
     Movie_Title: "Kantara",
