@@ -4,6 +4,7 @@ import classes from "./LLMAgent.module.css";
 import { padding } from "./ChatSpace";
 import { ChatContext } from "../../hooks/ChatProvider";
 import { api } from "../../api/axios-api";
+import { notifications } from "@mantine/notifications";
 
 export function InputField({ application }: any) {
   const [inputValue, setInputValue] = useState("");
@@ -16,7 +17,15 @@ export function InputField({ application }: any) {
       .then(({ data }) => {
         addMessage({ role: "agent", message: data, application: application });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        notifications.show({
+          color: "red",
+          title: "Error Occurred!",
+          autoClose: 7000,
+          message:
+            "The backend might not be connected, hence unable to communicate with model",
+        });
+      });
   };
 
   const addMessage = ({ role, message, application }: any) => {
