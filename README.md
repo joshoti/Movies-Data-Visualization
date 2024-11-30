@@ -4,6 +4,6 @@ An interactive dashboard for some movies dataset. Integration with a python back
 
 - See Python Flask API [here](https://github.com/joshoti/Movies-Data-Analysis)
 
-## Current Landing page (You should take a look)
+## Current Landing page
 
 <img src="src/app/assets/images/Landing Page.png" title="Landing page">
