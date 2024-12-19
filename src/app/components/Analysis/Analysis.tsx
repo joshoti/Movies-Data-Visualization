@@ -27,7 +27,7 @@ export const getDataFromApi = ({
     return;
   }
   api
-    .get(endpoint)
+    .get(endpoint, { signal: AbortSignal.timeout(500) })
     .then(({ data }) => {
       setDataCallback(data);
     })
