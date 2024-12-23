@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
-import { Button, Group, Textarea } from "@mantine/core";
+import { Button, Flex, Group, Textarea, Modal, Paper } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { IconArrowUp } from "@tabler/icons-react";
 import classes from "./LLMAgent.module.css";
 import { padding } from "./ChatSpace";
 import { ChatContext } from "../../hooks/ChatProvider";
 import { api } from "../../api/axios-api";
-import { notifications } from "@mantine/notifications";
 
 export function InputField({ application }: any) {
+  const sendButtonSize = 40;
+  const [openModal, setOpenModal] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const chatContext = useContext(ChatContext);
@@ -68,9 +71,59 @@ export function InputField({ application }: any) {
         onChange={(event) => setInputValue(event.currentTarget.value)}
         onKeyDown={handleEnterKey}
       />
-      <Button radius="md" size="md" onClick={clearMessages}>
+      <Flex
+        className={classes.sendButton}
+        justify="center"
+        align="center"
+        style={{
+          marginRight: 10,
+          borderRadius: sendButtonSize / 2,
+          height: sendButtonSize,
+          width: sendButtonSize,
+        }}
+      >
+        <IconArrowUp size={sendButtonSize - 10} style={{ color: "white" }} />
+      </Flex>
+      <Button
+        color="rgb(134, 139, 230)"
+        variant="outline"
+        radius="md"
+        size="md"
+        onClick={() => setOpenModal(true)}
+      >
         Clear Chat
       </Button>
+      <Modal
+        opened={openModal}
+        onClose={() => setOpenModal(false)}
+        title="Do you want to clear chat?"
+        centered
+        withCloseButton={false}
+      >
+        <Paper>
+          <Button
+            color="red"
+            variant="outline"
+            radius="md"
+            size="md"
+            mr={20}
+            onClick={() => {
+              clearMessages();
+              setOpenModal(false);
+            }}
+          >
+            Confirm
+          </Button>
+          <Button
+            color="gray"
+            radius="md"
+            size="md"
+            onClick={() => setOpenModal(false)}
+          >
+            Cancel
+          </Button>
+        </Paper>
+      </Modal>
     </Group>
   );
 }

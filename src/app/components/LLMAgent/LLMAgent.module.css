@@ -9,3 +9,10 @@
   outline: 1px solid gray;
   outline-offset: -2px;
 }
+.sendButton {
+  background-color: rgb(134, 139, 230);
+  cursor: pointer;
+}
+.sendButton:hover {
+  background-color: rgb(120, 124, 207);
+}
