@@ -7,9 +7,10 @@ An interactive dashboard for some movies dataset. Integration with a python back
 ## Live Development Link
 Find the frontend's live development link [here](https://movies-data-visualization.vercel.app). 
 
-***Note***: Cold start will delay first request.
+## Local Environment Setup
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/en)
 
-## Setup
 Run below scripts in terminal depending on your OS. On completion, script tells you next step.
 ### 1. Windows (cmd app)
 ```py
@@ -22,6 +23,8 @@ boot.bat
 curl -O https://raw.githubusercontent.com/joshoti/Movies-Data-Visualization/HEAD/boot.sh
 source boot.sh
 ```
+
+The application should now be running at [http://localhost:3000](http://localhost:3000)
 
 ## Current Landing page
 
